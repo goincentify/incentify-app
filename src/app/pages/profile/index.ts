@@ -1,0 +1,6 @@
+export { CommunicationComponent } from './communication/communication.component'
+export { OrdersComponent } from './orders/orders.component'
+export { PaymentComponent } from './payment/payment.component'
+export { ProfileComponent } from './profile/profile.component'
+export { RedeempointsComponent } from './redeempoints/redeempoints.component'
+export { SecurityComponent } from './security/security.component'

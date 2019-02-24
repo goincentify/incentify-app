@@ -1,0 +1,215 @@
+﻿<div class="login-grid" fxLayoutAlign="center center">
+
+    <!-- TITLE BLOCK -->
+
+    <div style="text-align: right;">
+        <div class="title-block" style="text-align: right;">
+            <h1>Welcome to Incentify!</h1>
+            <!-- <p class="subheader">Because, you deserve</p> -->
+        </div>
+    </div>
+
+    <!-- LOGIN BLOCK -->
+
+    <div class="login-block">
+        <mat-card>
+            <mat-card-header>
+                <div mat-card-avatar>
+                    <mat-icon>person</mat-icon>
+                </div>
+                <mat-card-title>Register</mat-card-title>
+            </mat-card-header>
+
+            <mat-divider style="padding:3px;"></mat-divider>
+            <div class="alert-container" fxLayoutAlign="center">
+                <alert></alert>
+            </div>
+            <mat-card-content style="text-align: center">
+                <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <mat-form-field><input matInput type="text" formControlName="firstName" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" /></mat-form-field>
+                        <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                            <div class="err" *ngIf="f.firstName.errors.required">*required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <mat-form-field><input matInput type="text" formControlName="lastName" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" /></mat-form-field>
+                        <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                            <div class="err" *ngIf="f.lastName.errors.required">*required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <mat-form-field><input matInput type="text" formControlName="username" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.username.errors }" /></mat-form-field>
+                        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                            <div class="err" *ngIf="f.username.errors.required">*required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <mat-form-field><input matInput type="password" formControlName="password" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.password.errors }" /></mat-form-field>
+                        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                            <div class="err" *ngIf="f.password.errors.required">*required</div>
+                            <div class="err" *ngIf="f.password.errors.minlength">Must be at least 6 characters</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button mat-flat-button color="primary" [disabled]="loading">Register</button>
+                        <button mat-stroked-button color="primary" routerLink="/login">Cancel</button>
+                        <img *ngIf="loading" class="pl-3"
+                            src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+                    </div>
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+
+<div class="info-grid" fxLayoutAlign="center center">
+    <div fxDirection="column">
+        <h1> Get Started with Incentify</h1>
+        <button mat-flat-button color="primary" (click)="contact.scrollIntoView()">Contact Us</button>
+    </div>
+</div>
+
+<div class="info-grid" fxDirection="row" fxLayoutAlign="center center">
+    <div fxFlex="50" fxDirection="column">
+        <img class="info-image" src="assets/img/home/turnover.png">
+    </div>
+    <div fxFlex="50" fxDirection="column">
+        <h1> The Problem </h1>
+        <p>
+            <strong>Employee turnover</strong> is expensive. Specifically,
+            companies haven’t figured out how to engage and
+            retain an increasingly Millennial/Gen Z workforce.
+        </p>
+        <p>
+            <strong>Attracting talent</strong> is difficult for companies in a highly
+            competitive labor market.
+        </p>
+    </div>
+</div>
+
+<div class="info-grid" fxDirection="row" fxLayoutAlign="center center">
+    <div fxFlex="50" fxDirection="column">
+        <h1> The Solution </h1>
+        <p>
+            An online platform where employees earn perks based on performance
+        </p>
+        <div fxDirection="row">
+            <div fxDirection="column" fxFlex="30">
+                <strong>Attract Talent</strong>
+                <p>Perk packages match recruits’ values</p>
+            </div>
+            <div fxDirection="column" fxFlex="30">
+                <strong>Boost Productivity</strong>
+                <p>Incentives for high performance</p>
+            </div>
+            <div fxDirection="column" fxFlex="30">
+                <strong>Retain Employees</strong>
+                <p>Improved corporate culture</p>
+            </div>
+        </div>
+    </div>
+    <div fxFlex="50" fxDirection="column">
+        <img class="info-image" src="assets/img/home/community.png">
+    </div>
+</div>
+
+<header #contact class="footer">
+    <div fxLayoutAlign="center center">
+        <div fxDirection="column">
+            <h1 style="color:white"> Our Team </h1>
+            <p><a target="_blank" href="mailto:info@goincentify.com">info@goincentify.com</a></p>
+            <div fxDirection="row" fxLayoutAlign="center center">
+                <div fxDirection="column" fxFlex="30">
+                    <img class="profile" src="assets/img/profiles/sam.png">
+                    <h3>Sam Seder</h3>
+                    <p>Co-Founder and CEO</p>
+                    <!-- <p><a href="">sam.seder@incentify.com</a></p> -->
+                </div>
+                <div fxDirection="column" fxFlex="30">
+                    <img class="profile" src="assets/img/profiles/lindsay.png">
+                    <h3>Lindsay MacMillan</h3>
+                    <p>Co-Founder</p>
+                    <!-- <p><a href="">lindsay.macmillan@incentify.com</a></p> -->
+                </div>
+                <div fxDirection="column" fxFlex="30">
+                    <img class="profile" src="assets/img/profiles/sergei.jpg">
+                    <h3>Sergei Hanka</h3>
+                    <p>Co-Founder and CTO</p>
+                    <!-- <p><a href="">sergei.hanka@incentify.com</a></p> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="license">
+    <span class="spacer"></span>
+    All rights reserved 2019 Sergei Hanka & Incentify
+</div>
+
+<!-- <div class="register-grid" fxLayoutAlign="center center">
+    <mat-card style="width: 50%;">
+        <mat-card-header>
+            <div mat-card-avatar>
+                <mat-icon>person</mat-icon>
+            </div>
+            <mat-card-title>Register</mat-card-title>
+        </mat-card-header>
+
+        <mat-divider style="padding:3px;"></mat-divider>
+        <div class="alert-container" fxLayoutAlign="center">
+            <alert></alert>
+        </div>
+        <mat-card-content style="text-align: center">
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <mat-form-field><input matInput type="text" formControlName="firstName" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" /></mat-form-field>
+                    <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                        <div class="err" *ngIf="f.firstName.errors.required">*required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <mat-form-field><input matInput type="text" formControlName="lastName" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" /></mat-form-field>
+                    <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                        <div class="err" *ngIf="f.lastName.errors.required">*required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <mat-form-field><input matInput type="text" formControlName="username" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.username.errors }" /></mat-form-field>
+                    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                        <div class="err" *ngIf="f.username.errors.required">*required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <mat-form-field><input matInput type="password" formControlName="password" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.password.errors }" /></mat-form-field>
+                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                        <div class="err" *ngIf="f.password.errors.required">*required</div>
+                        <div class="err" *ngIf="f.password.errors.minlength">Must be at least 6 characters</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button mat-flat-button color="primary" [disabled]="loading">Register</button>
+                    <button mat-stroked-button color="primary" routerLink="/login">Cancel</button>
+                    <img *ngIf="loading" class="pl-3"
+                        src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div> -->

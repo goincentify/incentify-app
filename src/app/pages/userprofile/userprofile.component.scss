@@ -1,0 +1,56 @@
+@import "../../app.component.scss";
+
+img {
+  width: 90%;
+  height: 90%;
+}
+
+.sidenav-container {
+  background-color: $grey-secondary;
+  position: absolute;
+  top: 68px;
+  bottom: 0px;
+  left: 0;
+  right: 0;
+}
+
+.sidenav {
+  display: flex;
+  align-items: left;
+  justify-content: left;
+  width: 200px;
+
+  mat-list {
+    margin-top: 67px;
+
+    mat-list-item {
+      cursor: pointer;
+    }
+  }
+}
+
+.content {
+  margin-top: 12px;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.optiontile {
+  cursor: pointer;
+
+  -webkit-box-shadow: 0px 1px 1px $grey-primary;
+  -moz-box-shadow: 0px 1px 1px $grey-primary;
+  box-shadow: 0px 1px 1px $grey-primary;
+}
+
+table {
+  width: 100%;
+
+  -webkit-box-shadow: 0px 1px 1px $grey-primary;
+  -moz-box-shadow: 0px 1px 1px $grey-primary;
+  box-shadow: 0px 1px 1px $grey-primary;
+}
+
+.menuicon {
+  margin-right: 6px;
+}

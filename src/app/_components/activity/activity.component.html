@@ -1,0 +1,40 @@
+<mat-card class="activity">
+  <mat-list class="activitylist">
+    <mat-list-item class="activitytitle">
+      <table class="activitylog">
+        <tr>
+          <td class="activityentry">
+            <h4> Code </h4>
+          </td>
+          <td class="activityentry">
+            <h4> Description </h4>
+          </td>
+          <td class="activityentry">
+            <h4> Time </h4>
+          </td>
+          <td class="activityentry">
+            <h4> Date </h4>
+          </td>
+        </tr>
+      </table>
+    </mat-list-item>
+    <mat-list-item *ngFor="let log of logs">
+      <table class="activitylog">
+        <tr>
+          <td class="activityentry">
+            <p mat-line>{{log.code}}</p>
+          </td>
+          <td class="activityentry">
+            <p mat-line>{{log.description}}</p>
+          </td>
+          <td class="activityentry">
+            <p mat-line> {{log.time}} </p>
+          </td>
+          <td class="activityentry">
+            <p mat-line> {{log.date | date}} </p>
+          </td>
+        </tr>
+      </table>
+    </mat-list-item>
+  </mat-list>
+</mat-card>

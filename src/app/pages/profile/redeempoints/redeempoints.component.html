@@ -1,0 +1,32 @@
+<div fxLayoutAlign="center center">
+
+  <div class="form-container" fxDirection="column">
+    <p>Redeem Rewards Code</p>
+
+    <mat-form-field>
+      <input matInput placeholder="" [(ngModel)]="code" value="{{code.toUpperCase()}}">
+    </mat-form-field>
+
+    <button mat-flat-button color="primary" (click)="redeem(code)" placeholder="Add Points"> Redeem </button>
+  </div>
+</div>
+
+<mat-divider></mat-divider>
+
+<div fxLayoutAlign="center center">
+
+  <div class="form-container" fxDirection="column">
+    <p>Cash out!</p>
+
+    <mat-radio-group class="example-radio-group" [(ngModel)]="selectedCard">
+      <mat-radio-button class="example-radio-button" *ngFor="let card of availableCards"
+        disabled="{{currentUser.points < card.cost}}" [value]="card">
+        Redeem {{card.cost}} points for ${{ card.amount }}
+      </mat-radio-button>
+    </mat-radio-group>
+
+    <button mat-flat-button color="primary" (click)="addPoints(- selectedCard.cost)"
+      [disabled]="currentUser.points < 500" placeholder="Add Points"> Confirm
+    </button>
+  </div>
+</div>

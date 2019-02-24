@@ -1,0 +1,107 @@
+@import "../../app.component.scss";
+
+@import "../../app.component.scss";
+
+/* Change autocomplete styles in WebKit */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: 0;
+  -webkit-text-fill-color: black;
+  -webkit-box-shadow: 0;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+form {
+  label {
+    padding-right: 6px;
+  }
+
+  button {
+    margin-right: 3px;
+  }
+
+  .warning {
+    color: rgb(100, 0, 0);
+    margin-top: -6px;
+    margin-bottom: 6px;
+  }
+}
+
+.alert-container {
+  width: 100%;
+}
+
+.login-block {
+  padding: 30px;
+}
+
+.login-grid {
+  height: 600px;
+  background-color: $navy-primary;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.info-grid {
+  margin-top: 56px;
+  flex-wrap: wrap;
+  text-align: center;
+
+  img {
+    width: 50%;
+  }
+}
+
+.title-block {
+  color: white;
+  margin: 12px;
+
+  .subheader {
+    font-size: 14px;
+    color: $navy-alternate;
+  }
+}
+.license {
+  background-color: $navy-primary;
+  font-size: 8px;
+  color: $grey-primary;
+}
+
+.footer {
+  flex-wrap: wrap;
+  text-align: center;
+  margin-top: 12px;
+  padding: 56px;
+  color: $white;
+  background-color: $navy-primary;
+
+  p {
+    color: $navy-alternate;
+    a {
+      color: $navy-alternate;
+      text-decoration-line: none;
+    }
+  }
+
+  img {
+    width: 50%;
+  }
+}
+
+.register-grid {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.mat-form-field-wrapper {
+  padding: 3px !important;
+}
+
+button {
+  margin-top: 6px;
+}

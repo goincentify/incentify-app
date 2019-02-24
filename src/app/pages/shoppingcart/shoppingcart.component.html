@@ -1,0 +1,79 @@
+<!-- <p style="color: rgb(114, 11, 11); text-align: center;"> *** Shopping Cart under construction. ***</p> -->
+
+<h1 class="pagetitle" *ngIf="cart.length>0"> Shopping Cart </h1>
+
+<div class="marketgrid" fxLayoutAlign="center">
+
+    <div *ngIf="cart.length==0" style="text-align:center; align-items:center">
+        <h2> Your cart is empty!</h2>
+
+        <a href="/userprofile/orders"> View Orders </a>
+
+        <button mat-button class="backtomarket" routerLink="/marketplace" routerLinkActive="active">
+            Return to Marketplace
+        </button>
+    </div>
+
+    <div *ngIf="cart.length>0" class="shoppingcart">
+        <mat-list style="padding-top:0">
+            <mat-list-item class="headerbar">
+                <table>
+                    <tr>
+                        <td class="tableItem cartheader" *ngFor="let header of displayedColumns">
+                            <h4> {{header}} </h4>
+                        </td>
+                        <td class="tableItem cartheader"></td>
+                    </tr>
+                </table>
+            </mat-list-item>
+
+            <mat-divider></mat-divider>
+
+            <mat-list-item *ngFor="let item of cart">
+                <table>
+                    <tr>
+                        <td class="tableItem">
+                            <p mat-line>{{item.name}}</p>
+                        </td>
+                        <td class="tableItem">
+                            <p mat-line>{{item.price | number}}</p>
+                        </td>
+                        <td>
+                            <mat-icon class="deleteicon" (click)="removeFromCart(item.id)">close</mat-icon>
+                        </td>
+                    </tr>
+                </table>
+            </mat-list-item>
+        </mat-list>
+    </div>
+
+    <mat-divider *ngIf="cart.length>0" [vertical]="true" style="margin:12px;padding-left:12px"></mat-divider>
+
+    <div *ngIf="cart.length>0" class="shoppingsummary">
+        <div class="summarytable">
+            <table>
+                <tr>
+                    <td class="tableItem title">Your Points</td>
+                    <td class="tableItem value">{{pointsTotal | number}} points</td>
+                </tr>
+                <tr>
+                    <td class="tableItem title">Subtotal</td>
+                    <td class="tableItem value"> {{totalCost | number}} points</td>
+                </tr>
+                <tr>
+                    <td class="tableItem title"> Balance</td>
+                    <td class="tableItem value">{{pointsTotal - totalCost | number}} points</td>
+                </tr>
+                <tr class="actions">
+                    <td class="alignright">
+                        <button mat-button class="marketbutton" routerLink="/marketplace" routerLinkActive="active">
+                            Back to Market </button>
+                    </td>
+                    <td class="alignleft">
+                        <button mat-button class="checkoutbutton" (click)="redeemCart()"> Redeem Points </button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

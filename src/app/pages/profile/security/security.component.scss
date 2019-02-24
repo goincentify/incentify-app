@@ -1,0 +1,10 @@
+@import "../../../app.component.scss";
+
+.form-container {
+  background-color: white;
+  margin: 36px;
+  padding: 36px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+}

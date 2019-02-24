@@ -1,0 +1,107 @@
+<!-- <div class="marketTools" fxLayoutAlign="center center" fxLayout="column">
+  <h1> Incentify Marketplace </h1>
+</div> -->
+
+<mat-toolbar class="optionBar">
+
+  <span class="spacer"></span>
+
+  <div class="options">
+    Not finding anything rewarding? Cash out your points:
+    <a routerLink="/userprofile/redeem">Go!</a>
+  </div>
+
+  <span class="spacer"></span>
+
+  <div>{{filteredItems.length}} of {{items.length}} items</div>
+</mat-toolbar>
+
+<!-- MARKETPLACE -->
+
+<div fxLayout="row">
+
+  <!-- SIDENAV -->
+  <div class="sidenav" fxLayout="column" fxFlex="30">
+    <div class="filters">
+      <mat-accordion *ngFor="let item of filters" class="mat-elevation-z0">
+        <mat-expansion-panel class="filter-panel mat-elevation-z0" [expanded]="true">
+          <mat-expansion-panel-header>
+            <strong>{{item.category}}</strong>
+          </mat-expansion-panel-header>
+          <mat-selection-list color="primary">
+            <!-- <mat-list-option checkboxPosition="before" *ngFor="let tag of item.tags" [value]="tag" (click)="tagClicked(tag)" -->
+            <mat-list-option *ngFor="let tag of item.tags" class="primary" [value]="tag" (click)="tagClicked(tag)"
+              [selected]="isSelected(tag)">
+              {{tag}}
+            </mat-list-option>
+          </mat-selection-list>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </div>
+
+
+  <!-- CONTENT -->
+  <div fxLayout="column" class="marketcontent" fxFlex="70">
+
+    <div fxLayout="row">
+      <div fxFlex="80">
+        <mat-form-field class="search" floatLabel="never" (keydown)="keyDownFunction($event,search)">
+          <button mat-button matPrefix *ngIf="search" mat-icon-button aria-label="Clear"
+            (click)="search='';applyFilters();clear()">
+            <mat-icon>close</mat-icon>
+          </button>
+          <input type="text" matInput placeholder="" [(ngModel)]="search">
+          <mat-icon class="searchicon" matSuffix (click)="applyFilters()">search</mat-icon>
+        </mat-form-field>
+      </div>
+
+      <div fxFlex="20" fxLayoutAlign="center center">
+        <button mat-button [matMenuTriggerFor]=" menu"> Sort: <mat-icon class="sorticon">{{sortType.direction}}
+          </mat-icon>
+          {{sortType.type}} </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="sort('pricesort')">
+            <mat-icon class="sorticon">attach_money</mat-icon> Price
+          </button>
+          <button mat-menu-item (click)="sort('alphasort')">
+            <mat-icon class="sorticon">sort_by_alpha</mat-icon> Alpha
+          </button>
+        </mat-menu>
+      </div>
+
+    </div>
+
+    <div class="tagsList">
+      <mat-chip-list>
+        <mat-chip *ngFor="let tag of selectedTags" (removed)="removeTag(tag)">
+          {{tag}}
+          <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip>
+      </mat-chip-list>
+    </div>
+
+    <div class="marketgrid" fxLayoutAlign="center">
+      <div fxLayout="column" class="rewardItem" *ngFor="let item of filteredItems" (mouseenter)="item.hover=true"
+        (mouseleave)="item.hover=false">
+        <mat-icon class="cartTicker" *ngIf="item.incart">shopping_basket</mat-icon>
+        <div>
+          <img (click)="openDetails(item);" class="rewarditem" src={{item.image}} alt="item.image">
+        </div>
+        <div fxLayout="column" fxLayoutAlign="center center" *ngIf="!item.hover">
+          <div class="maintext">
+            <strong>{{item.name}}</strong>
+          </div>
+          <div>
+            <p class="points">{{item.price | number}} points</p>
+          </div>
+        </div>
+        <div fxLayout="column" fxLayoutAlign="center center" *ngIf="item.hover">
+          <div class="maintext">
+            <p>Details</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

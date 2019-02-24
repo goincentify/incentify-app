@@ -1,0 +1,49 @@
+<mat-toolbar class="navbar headerbar" *ngIf="currentUser">
+  <img src="/assets/icon/spdata-logo.svg" class="spLogo" (click)="routeTo('')" style="cursor: pointer">
+
+  <div mat-line class="poweredBy" (click)="routeTo('')" style="cursor: pointer">
+    <p class="powered"> Powered By </p>
+    <h4 class="incentify">Incentify </h4>
+  </div>
+
+  <span class="spacer"></span>
+
+  <div mat-line class="userinfo">
+    <h4 class="username">{{currentUser.firstName}} {{currentUser.lastName}}</h4>
+    <p class="userpoints"> {{currentUser.points | number}} points </p>
+  </div>
+
+  <mat-icon (click)="routeTo('userprofile')" *ngIf="!currentUser.picture">person</mat-icon>
+  <img class="useravatar-icon" [src]='currentUser.picture' alt="" (click)="routeTo('userprofile')"
+    *ngIf="currentUser.picture">
+
+
+  <mat-icon (click)="routeTo('marketplace')">shopping_basket</mat-icon>
+
+  <mat-icon (click)="routeTo('shoppingcart')">shopping_cart<span *ngIf="cartCount>0" class="cartBadge"
+      matBadge="{{cartCount}}" matBadgeColor="primary" matBadgePosition="below after"></span></mat-icon>
+
+  <mat-icon (click)="routeTo('')">home</mat-icon>
+
+  <button mat-button [matMenuTriggerFor]="loggedinmenu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #loggedinmenu>
+    <button mat-menu-item (click)="logout()">Log Out</button>
+    <button mat-menu-item (click)="routeTo('admin')">Admin</button>
+  </mat-menu>
+
+</mat-toolbar>
+
+
+<mat-toolbar class="navbar headerbar" *ngIf="!currentUser">
+  <img src="/assets/icon/spdata-logo.svg" class="spLogo">
+
+  <div mat-line class="poweredBy">
+    <p class="powered"> Powered By </p>
+    <h4 class="incentify">Incentify </h4>
+  </div>
+
+  <span class="spacer"></span>
+
+</mat-toolbar>

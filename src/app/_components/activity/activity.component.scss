@@ -1,0 +1,19 @@
+@import "../../app.component.scss";
+
+.activitylog {
+    width : 100%;
+}
+
+.activityentry {
+    width: 30%;
+}
+
+.activity {
+    margin-top: 3px;
+    padding: 0;
+}
+
+.activitylist {
+    padding: 0;
+    background-color: rgba(243, 235, 227, 0.6);
+}

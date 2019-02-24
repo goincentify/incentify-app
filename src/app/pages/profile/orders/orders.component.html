@@ -1,0 +1,31 @@
+<p *ngIf="!ordersExist">
+  No order history!
+</p>
+
+<div fxLayoutAlign="center center">
+  <table *ngIf="ordersExist" mat-table [dataSource]="orders" class="orderTable" matSort matSortActive="date"
+    matSortDisableClear matSortDirection="asc">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> Order Id </th>
+      <td mat-cell *matCellDef="let order"> {{order.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let order"> {{order.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef> Price </th>
+      <td mat-cell *matCellDef="let order"> {{order.price}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+      <td mat-cell *matCellDef="let order"> {{order.date}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="orderColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: orderColumns;"></tr>
+  </table>
+</div>

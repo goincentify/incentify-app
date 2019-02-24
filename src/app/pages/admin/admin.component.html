@@ -1,0 +1,11 @@
+﻿<h1>Hi {{currentUser.firstName}}!</h1>
+<p>Welcome to the admin page.</p>
+<h3>Other registered users:</h3>
+<mat-list class="activitylist">
+    <div *ngFor="let user of users">
+        <mat-list-item *ngIf="user.username != currentUser.username">
+            {{user.username}} ({{user.firstName}} {{user.lastName}})
+            <mat-icon (click)="deleteUser(user.id)" style="color:red;cursor: pointer;">highlight_off</mat-icon>
+        </mat-list-item>
+    </div>
+</mat-list>

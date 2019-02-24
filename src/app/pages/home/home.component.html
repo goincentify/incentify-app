@@ -1,0 +1,10 @@
+<header>
+  <div class="title"></div>
+  <h1>Incentify</h1>
+</header>
+
+<section>
+  <h1>Section Content</h1>
+  <button mat-button (click)="openLogin()" *ngIf="!signon">Log in</button>
+  <button mat-button routerLink="/dashboard" routerLinkActive="active" *ngIf="signon">Dashboard</button>
+</section>

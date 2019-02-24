@@ -1,0 +1,35 @@
+<div fxLayoutAlign="center center">
+  <form [formGroup]="passwordForm" (ngSubmit)="passwordSubmit()">
+
+    <div class="form-container">
+
+      <mat-form-field>
+        <input matInput formControlName="oldPass" placeholder="Current Password">
+        <!-- <mat-error *ngIf="passwordForm.hasError('required')">
+          Old password is <strong>required</strong>.
+        </mat-error> -->
+        <!-- <mat-error *ngIf="passwordForm.hasError('notOld')">
+          Incorrect password.
+        </mat-error> -->
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="New password" formControlName="password" required>
+        <!-- <mat-error *ngIf="passwordForm.hasError('required', 'password')">
+          New password is <strong>required</strong>.
+        </mat-error> -->
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Confirm password" formControlName="confirmPassword" [errorStateMatcher]="matcher">
+        <!-- <mat-error *ngIf="passwordForm.hasError('notSame')">
+          Passwords do not match.
+        </mat-error> -->
+      </mat-form-field>
+
+      <br>
+
+      <button type="submit" mat-flat-button color="primary"> Change Password </button>
+    </div>
+  </form>
+</div>
