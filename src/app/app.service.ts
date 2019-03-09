@@ -1,7 +1,7 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {Observable} from 'rxjs/Observable';
-import {User} from './user/user.model';
+import { Observable } from 'rxjs/Observable';
+import { User } from './user/user.model';
 
 
 const httpOptions = {
@@ -11,9 +11,9 @@ const httpOptions = {
 @Injectable()
 export class UserService {
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  private userUrl = 'http://localhost:8080/';
+  private userUrl = 'http://localhost:8080';
 
   public getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.userUrl + '/users');
