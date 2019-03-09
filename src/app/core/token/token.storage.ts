@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 
+
 const TOKEN_KEY = 'AuthToken';
 
-@Injectable()
-export class TokenStorageService {
+@Injectable({ providedIn: 'root' })
+export class TokenStorage {
 
   constructor() { }
 
   signOut() {
+    window.sessionStorage.removeItem(TOKEN_KEY);
     window.sessionStorage.clear();
   }
 

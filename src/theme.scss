@@ -1,0 +1,52 @@
+@import "~@angular/material/theming";
+@include mat-core();
+
+// SIZES
+
+$nav-height: 72px;
+$content-nav-height: 300px;
+$compound-nav-height: calc($nav-height + $content-nav-height);
+
+// COLORS ----------------------------------------------------------
+
+$white: #ffffff;
+$black: #000000;
+
+// mat-blue - PRIMARY
+$blue-primary: #1d84d8; //500
+$blue-secondary: #90caf9; //200
+$blue-alternate: #e3f2fd; //50
+
+//mat-yellow - ACCENT
+$yellow-primary: #ffea00; //A200
+$yellow-secondary: #ffeb3b; //500
+$yellow-alternate: #fffde7; //50
+
+//mat-red - WARN
+$red-primary: #b71c1c; //900
+$red-secondary: #f44336; //500
+$red-alternate: #ffcdd2; //100
+
+// mat-grey
+$grey-primary: #757575; //400
+$grey-secondary: #e0e0e0; //300
+$grey-alternate: #fafafa; //50
+
+// mat-indigo
+$navy-primary: #0d1347; //900
+$navy-secondary: #0a0e33; //700
+$navy-alternate: #9fa8da; //200
+
+//////////////////////////
+
+// $webfont: "BlinkMacSystemFont", "Segoe UI", "Helvetica", "Arial", sans-serif;
+$webfont: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+
+$custom-theme-primary: mat-palette($mat-blue, 500, 200, 50);
+$custom-theme-accent: mat-palette($mat-indigo, 900, 700, 200);
+// $custom-theme-accent: mat-palette($mat-yellow, A200, 500, 50);
+$custom-theme-warn: mat-palette($mat-red, 900, 500, 100);
+
+$custom-theme: mat-light-theme($custom-theme-primary, $custom-theme-accent, $custom-theme-warn);
+
+@include angular-material-theme($custom-theme);

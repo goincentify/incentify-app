@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {MatTableDataSource} from '@angular/material';
-import {User} from './user.model';
-import {UserService} from '../app.service';
-import {Router} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material';
+import { User } from '@app/models/user.model';
+import { UserService } from '@app/service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',

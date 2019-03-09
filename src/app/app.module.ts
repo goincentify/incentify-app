@@ -4,17 +4,13 @@ import { AppComponent } from './app.component';
 import { CustomMaterialModule } from './core/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
-import { UserComponent } from './user/user.component';
-import { AppRoutingModule } from './core/app.routing.module';
-import { LoginComponent } from './login/login.component';
-import { ErrorDialogComponent } from './core/error-dialog.component';
-import { UserService } from "./app.service";
+import { AppRoutingModule } from './app.routing.module';
+import { UserService } from "./service/app.service";
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
-import { AuthService } from "./core/auth.service";
-import { Interceptor } from "./core/inteceptor";
-import { TokenStorage } from "./core/token.storage";
-import { AuthGuard } from './core/auth.guard';
-import { TokenStorageService } from './core/token-storage.service';
+
+import { LoginComponent, UserComponent } from '@app/pages';
+import { AuthService, ErrorDialogComponent, TokenStorage, TokenStorageService } from "@app/core"
+import { Interceptor } from './interceptor';
 
 @NgModule({
   declarations: [
@@ -32,7 +28,7 @@ import { TokenStorageService } from './core/token-storage.service';
     AppRoutingModule
   ],
   entryComponents: [ErrorDialogComponent],
-  providers: [ErrorDialogComponent, UserService, AuthGuard, AuthService, TokenStorage, TokenStorageService,
+  providers: [ErrorDialogComponent, UserService, AuthService, TokenStorage, TokenStorageService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: Interceptor,

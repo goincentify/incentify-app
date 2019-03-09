@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { UserComponent } from '../user/user.component';
-import { LoginComponent } from '../login/login.component';
-import { AuthGuard } from './auth.guard';
+import { LoginComponent, UserComponent } from '@app/pages';
+// import { AuthGuard } from './core/auth/auth.guard';
 
 const routes: Routes = [
-  { path: 'user', component: UserComponent, canActivate: [AuthGuard] },
+  { path: 'user', component: UserComponent },
   { path: 'login', component: LoginComponent },
   { path: '', component: LoginComponent },
   { path: '**', redirectTo: '' }
