@@ -9,7 +9,7 @@ import { UserService } from "./service/app.service";
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 
 import { LoginComponent, UserComponent } from '@app/pages';
-import { AuthService, ErrorDialogComponent, TokenStorage, TokenStorageService } from "@app/core"
+import { AuthService, ErrorDialogComponent, TokenStorage } from "@app/core"
 import { Interceptor } from './interceptor';
 
 @NgModule({
@@ -28,7 +28,7 @@ import { Interceptor } from './interceptor';
     AppRoutingModule
   ],
   entryComponents: [ErrorDialogComponent],
-  providers: [ErrorDialogComponent, UserService, AuthService, TokenStorage, TokenStorageService,
+  providers: [ErrorDialogComponent, UserService, AuthService, TokenStorage,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: Interceptor,

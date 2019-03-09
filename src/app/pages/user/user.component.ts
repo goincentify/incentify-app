@@ -3,6 +3,7 @@ import { MatTableDataSource } from '@angular/material';
 import { User } from '@app/models/user.model';
 import { UserService } from '@app/service';
 import { Router } from '@angular/router';
+import { AuthService } from '@app/core';
 
 @Component({
   selector: 'app-root',
@@ -12,8 +13,10 @@ import { Router } from '@angular/router';
 export class UserComponent implements OnInit {
   displayedColumns = ['id', 'username', 'salary', 'age'];
   dataSource = new MatTableDataSource<User>();
-  constructor(private router: Router, private userService: UserService) {
+
+  constructor(private router: Router, private authService: AuthService, private userService: UserService) {
   }
+
   ngOnInit(): void {
     this.userService.getUsers().subscribe(
       data => {
@@ -21,5 +24,10 @@ export class UserComponent implements OnInit {
       }
     );
   }
+
+  signout() {
+    this.authService.logout();
+  }
+
 }
 

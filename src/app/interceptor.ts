@@ -1,37 +1,36 @@
+import { HttpErrorResponse, HttpEvent, HttpHandler, HttpHeaderResponse, HttpInterceptor, HttpProgressEvent, HttpRequest, HttpResponse, HttpSentEvent, HttpUserEvent } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {
-  HttpInterceptor, HttpRequest, HttpHandler, HttpSentEvent, HttpHeaderResponse, HttpProgressEvent,
-  HttpResponse, HttpUserEvent, HttpErrorResponse
-} from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { TokenStorage } from '@app/core';
-import { tap } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 const TOKEN_HEADER_KEY = 'Authorization';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class Interceptor implements HttpInterceptor {
 
   constructor(private token: TokenStorage, private router: Router) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler):
-    Observable<HttpSentEvent | HttpHeaderResponse | HttpProgressEvent | HttpResponse<any> | HttpUserEvent<any>> {
+    Observable<HttpSentEvent | HttpHeaderResponse | HttpProgressEvent | HttpResponse<any> | HttpUserEvent<any> | HttpEvent<any>> {
     let authReq = req;
+
     if (this.token.getToken() != null) {
       authReq = req.clone({ headers: req.headers.set(TOKEN_HEADER_KEY, 'Bearer ' + this.token.getToken()) });
     }
-    return next.handle(authReq).pipe(
-      tap((err: any) => {
-        if (err instanceof HttpErrorResponse) {
-          console.log(err);
-          console.log('req url :: ' + req.url);
-          if (err.status === 401) {
-            this.router.navigate(['user']);
-          }
-        }
+
+    return next.handle(authReq).pipe(catchError(err => {
+      if (err instanceof HttpErrorResponse) { console.log('401 Unauthorized on :: ' + req.url); }
+
+      if (err.status === 401) {
+        console.log("HERE");
+        this.router.navigate(['login']);
       }
-      ));
+      const error = err.error.message || err.statusText;
+      return throwError(error);
+    }
+    ));
   }
 
 }

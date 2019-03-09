@@ -1,13 +1,23 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
 
-  baseUrl: 'http://localhost:8080/email2sms/';
+  private jwtHelper = new JwtHelperService();
 
   constructor(private http: HttpClient) {
+  }
+
+  logout() {
+    sessionStorage.clear();
+    window.location.reload();
+  }
+
+  public getToken(): string {
+    return sessionStorage.getItem('token');
   }
 
   attemptAuth(username: string, password: string): Observable<any> {
@@ -16,4 +26,8 @@ export class AuthService {
     return this.http.post<any>('http://localhost:8080/token/generate-token', credentials);
   }
 
+  public isAuthenticated(): boolean {
+    const token = this.getToken();
+    return !this.jwtHelper.isTokenExpired(token);
+  }
 }
