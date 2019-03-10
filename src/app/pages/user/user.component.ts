@@ -13,11 +13,18 @@ import { AuthService } from '@app/core';
 export class UserComponent implements OnInit {
   displayedColumns = ['id', 'username', 'salary', 'age'];
   dataSource = new MatTableDataSource<User>();
+  currentUser: User;
 
   constructor(private router: Router, private authService: AuthService, private userService: UserService) {
   }
 
   ngOnInit(): void {
+
+    // this.userService.currentUser.subscribe(user => {
+    //   this.currentUser = user;
+    //   console.log(this.currentUser);
+    // });
+
     this.userService.getUsers().subscribe(
       data => {
         this.dataSource.data = data;

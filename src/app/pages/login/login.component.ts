@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { AuthService, TokenStorage } from '@app/core';
+import { UserService } from '@app/service';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ import { AuthService, TokenStorage } from '@app/core';
 })
 export class LoginComponent {
 
-  constructor(private router: Router, public dialog: MatDialog, private authService: AuthService, private token: TokenStorage) {
+  constructor(private router: Router, public dialog: MatDialog, private authService: AuthService, private token: TokenStorage, private userService: UserService) {
   }
 
   username: string;
@@ -20,6 +21,7 @@ export class LoginComponent {
     this.authService.attemptAuth(this.username, this.password).subscribe(
       data => {
         this.token.saveToken(data.token);
+        this.userService.setCurrentUser(this.username);
         this.router.navigate(['user']);
       }
     );

@@ -8,16 +8,15 @@ export class AuthService {
 
   private jwtHelper = new JwtHelperService();
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) { }
 
   logout() {
-    sessionStorage.clear();
+    localStorage.clear();
     window.location.reload();
   }
 
   public getToken(): string {
-    return sessionStorage.getItem('token');
+    return localStorage.getItem('token');
   }
 
   attemptAuth(username: string, password: string): Observable<any> {
@@ -27,7 +26,6 @@ export class AuthService {
   }
 
   public isAuthenticated(): boolean {
-    const token = this.getToken();
-    return !this.jwtHelper.isTokenExpired(token);
+    return this.getToken != null;
   }
 }

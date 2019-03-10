@@ -24,7 +24,6 @@ export class Interceptor implements HttpInterceptor {
       if (err instanceof HttpErrorResponse) { console.log('401 Unauthorized on :: ' + req.url); }
 
       if (err.status === 401) {
-        console.log("HERE");
         this.router.navigate(['login']);
       }
       const error = err.error.message || err.statusText;

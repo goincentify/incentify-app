@@ -5,7 +5,7 @@ import { CustomMaterialModule } from './core/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app.routing.module';
-import { UserService } from "./service/app.service";
+import { UserService } from "@app/service";
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 
 import { LoginComponent, UserComponent } from '@app/pages';
