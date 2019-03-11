@@ -16,7 +16,7 @@ export class AuthService {
   }
 
   public getToken(): string {
-    return localStorage.getItem('token');
+    return localStorage.getItem('AuthToken');
   }
 
   attemptAuth(username: string, password: string): Observable<any> {

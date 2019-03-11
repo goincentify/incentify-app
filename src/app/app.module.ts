@@ -5,9 +5,10 @@ import { CustomMaterialModule } from './core/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app.routing.module';
-import { UserService } from "@app/service";
+import { UserService, UserResolve } from "@app/service";
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 
+import { NavbarComponent } from '@app/components'
 import { LoginComponent, UserComponent } from '@app/pages';
 import { AuthService, ErrorDialogComponent, TokenStorage } from "@app/core"
 import { Interceptor } from './interceptor';
@@ -17,6 +18,7 @@ import { Interceptor } from './interceptor';
     AppComponent,
     UserComponent,
     LoginComponent,
+    NavbarComponent,
     ErrorDialogComponent
   ],
   imports: [

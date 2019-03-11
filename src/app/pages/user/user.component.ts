@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
 import { User } from '@app/models/user.model';
-import { UserService } from '@app/service';
-import { Router } from '@angular/router';
+// import { UserService } from '@app/service';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '@app/core';
 
 @Component({
@@ -15,21 +15,14 @@ export class UserComponent implements OnInit {
   dataSource = new MatTableDataSource<User>();
   currentUser: User;
 
-  constructor(private router: Router, private authService: AuthService, private userService: UserService) {
+  constructor(private route: ActivatedRoute, private authService: AuthService) {
   }
 
-  ngOnInit(): void {
-
-    // this.userService.currentUser.subscribe(user => {
-    //   this.currentUser = user;
-    //   console.log(this.currentUser);
-    // });
-
-    this.userService.getUsers().subscribe(
-      data => {
-        this.dataSource.data = data;
-      }
-    );
+  ngOnInit() {
+    this.route.data.subscribe(data => {
+      console.log(data);
+      this.dataSource.data = data.users;
+    });
   }
 
   signout() {

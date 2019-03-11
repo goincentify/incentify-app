@@ -1,12 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
-import { User } from '@app/models';
 import { AuthService } from '@app/core';
-// import { ShoppingService } from '@app/_services/shopping.service';
+import { User } from '@app/models';
 import { Subscription } from 'rxjs';
-import { first } from 'rxjs/operators';
-
 
 @Component({
   selector: 'app-navbar',
@@ -23,7 +19,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   currentShoppingSubscription: Subscription;
   cartCount: number;
 
-  constructor(private router: Router, private authenticationService: AuthService, public dialog: MatDialog) { }
+  constructor(private router: Router, private authService: AuthService) { }
 
   ngOnInit() { }
 
@@ -38,8 +34,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   logout() {
-    this.authenticationService.logout();
-    this.router.navigate(['/login']);
+    this.authService.logout();
   }
 
 }

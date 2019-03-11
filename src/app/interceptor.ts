@@ -18,9 +18,12 @@ export class Interceptor implements HttpInterceptor {
 
     if (this.token.getToken() != null) {
       authReq = req.clone({ headers: req.headers.set(TOKEN_HEADER_KEY, 'Bearer ' + this.token.getToken()) });
+    } else {
+      this.router.navigate(['login']);
     }
 
     return next.handle(authReq).pipe(catchError(err => {
+
       if (err instanceof HttpErrorResponse) { console.log('401 Unauthorized on :: ' + req.url); }
 
       if (err.status === 401) {

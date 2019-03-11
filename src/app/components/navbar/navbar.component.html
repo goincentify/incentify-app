@@ -1,12 +1,17 @@
-<mat-toolbar class="navbar headerbar" *ngIf="loggedIn">
-  <img src="/assets/icon/spdata-logo.svg" class="spLogo" (click)="routeTo('')" style="cursor: pointer">
+<mat-toolbar class="navbar headerbar">
+  <img src="/assets/img/icon/spdata-logo.svg" class="spLogo" (click)="routeTo('')" style="cursor: pointer">
 
   <div mat-line class="poweredBy" (click)="routeTo('')" style="cursor: pointer">
     <p class="powered"> Powered By </p>
     <h4 class="incentify">Incentify </h4>
   </div>
-
   <span class="spacer"></span>
+
+  <button mat-button (click)="logout()">Sign Out</button>
+
+  <!-- <span class="spacer"></span>
+
+    <button mat-button (click)="signout()">Sign Out</button>
 
   <div mat-line class="userinfo">
     <h4 class="username">{{currentUser.firstName}} {{currentUser.lastName}}</h4>
@@ -44,6 +49,6 @@
     <h4 class="incentify">Incentify </h4>
   </div>
 
-  <span class="spacer"></span>
+  <span class="spacer"></span> -->
 
 </mat-toolbar>
