@@ -5,9 +5,13 @@ import { UserResolve } from './service';
 import { AuthGuard } from '@app/core'
 
 const routes: Routes = [
-  { path: 'user', component: UserComponent, resolve: { users: UserResolve }, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
-  { path: '', component: UserComponent, canActivate: [AuthGuard] },
+  {
+    path: '', resolve: { users: UserResolve }, canActivate: [AuthGuard],
+    children: [
+      { path: 'user', component: UserComponent },
+    ]
+  },
   { path: '**', redirectTo: '' }
 ];
 
