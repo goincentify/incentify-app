@@ -1,14 +1,19 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { Observable } from 'rxjs';
+import {Observable, of} from "rxjs";
+import { GLOBAL } from '@app/constants';
+import { UserService } from '@app/service';
+import { TokenStorage } from '../token/token.storage';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
 
   private jwtHelper = new JwtHelperService();
 
-  constructor(private http: HttpClient) { }
+  constructor(private tokenStorage: TokenStorage, private http: HttpClient) { }
+
+  public loggedIn: Observable<boolean>;
 
   logout() {
     localStorage.clear();
@@ -16,16 +21,29 @@ export class AuthService {
   }
 
   public getToken(): string {
-    return localStorage.getItem('AuthToken');
+    return localStorage.getItem(GLOBAL.TOKEN_KEY);
+  }
+
+  public getUsername(): string {
+    const token = this.getToken();
+    let payload;
+    if (token) {
+      payload = token.split('.')[1];
+      payload = window.atob(payload);
+      
+      return JSON.parse(payload)['sub'];
+    } else {
+      this.tokenStorage.signOut();
+      return null;
+    }
   }
 
   attemptAuth(username: string, password: string): Observable<any> {
     const credentials = { username: username, password: password };
-    console.log('attempAuth ::');
     return this.http.post<any>('http://localhost:8080/token/generate-token', credentials);
   }
 
   public isAuthenticated(): boolean {
-    return this.getToken != null;
+    return this.getToken() != null;
   }
 }

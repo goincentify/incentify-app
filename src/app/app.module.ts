@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import { CustomMaterialModule } from './core/material.module';
+import { CustomMaterialModule } from './material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app.routing.module';
@@ -39,4 +39,18 @@ import { Interceptor } from './interceptor';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule{
+
+  constructor(private authService: AuthService, private userService: UserService) {
+    if(this.authService.isAuthenticated()) {
+      console.log("AUTH");
+      try {
+        this.userService.setCurrentUser(this.authService.getUsername());
+      } catch (ex) {
+        console.log("Unable to get user.");
+      }
+    } else {
+      console.log("NO AUTH");
+    }
+  }
+}

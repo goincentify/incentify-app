@@ -4,6 +4,7 @@ import { User } from '@app/models/user.model';
 // import { UserService } from '@app/service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '@app/core';
+import { UserService } from '@app/service';
 
 @Component({
   selector: 'app-root',
@@ -15,15 +16,13 @@ export class UserComponent implements OnInit {
   dataSource = new MatTableDataSource<User>();
   currentUser: User;
 
-  constructor(private route: ActivatedRoute, private authService: AuthService) {
-  }
+  constructor(private userService: UserService, private route: ActivatedRoute, private authService: AuthService) { }
 
   ngOnInit() {
     this.route.data.subscribe(data => {
-      console.log(data);
       this.dataSource.data = data.users;
     });
-  }
+  } 
 
   signout() {
     this.authService.logout();

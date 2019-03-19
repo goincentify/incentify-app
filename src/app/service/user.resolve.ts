@@ -3,7 +3,8 @@ import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from "@a
 import { User } from "@app/models";
 import { UserService } from "./user.service";
 import { EMPTY, Observable, of } from "rxjs";
-import { mergeMap, take } from 'rxjs/operators';
+import { mergeMap, take, switchMap } from 'rxjs/operators';
+import { AuthService } from "@app/core";
 
 @Injectable({
     providedIn: 'root',
@@ -12,10 +13,9 @@ export class UserResolve implements Resolve<User[]> {
     constructor(private userService: UserService) { }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<User[]> | Observable<never> {
-        console.log("resolving");
         return this.userService.getUsers().pipe(
             take(1),
-            mergeMap(users => {
+            switchMap(users => {
                 if (users) {
                     return of(users);
                 } else {
@@ -28,24 +28,27 @@ export class UserResolve implements Resolve<User[]> {
     }
 }
 
-// @Injectable()
-// export class CurrentUserResolve implements Resolve<User[]> {
-//     constructor(private userService: UserService ) { }
+// @Injectable({
+//     providedIn: 'root',
+// })
+// export class CurrentUserResolve implements Resolve<User> {
+//     constructor(private userService: UserService, private authService: AuthService) {}
 
-//     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<User[]> | Observable<never> {
-
-//         let id = route.paramMap.get('id');
-
-//         return this.userService.getUsers().pipe(
+//     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<User> | Observable<never> {
+//         const id: String = this.authService.getUsername();
+//         console.log(id);
+//         return this.userService.setCurrentUser(id).pipe(
 //             take(1),
-//             mergeMap(users => {
-//                 if (users) {
-//                     return of(users);
+//             switchMap(user => {
+//                 if (user) {
+//                     return of(user);
 //                 } else {
 //                     // this.router.navigate(['/crisis-center']);
+//                     console.log("Error getting user");
 //                     return EMPTY;
 //                 }
 //             })
 //         );
+        
 //     }
 // }

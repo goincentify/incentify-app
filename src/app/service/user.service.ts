@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject, of, EMPTY } from 'rxjs';
 import { User } from '@app/models';
 import { AuthService } from '@app/core';
+import { switchMap, map, take } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 
 const httpOptions = {
@@ -12,10 +14,9 @@ const httpOptions = {
 @Injectable({ providedIn: 'root' })
 export class UserService {
 
-  private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
 
-  constructor(private http: HttpClient, private authService: AuthService) { }
+  constructor(private router: Router, private http: HttpClient, private authService: AuthService) { }
 
   private userUrl = 'http://localhost:8080';
 
@@ -23,23 +24,21 @@ export class UserService {
     return this.http.get<User[]>(this.userUrl + '/users', httpOptions);
   }
 
-  setCurrentUser(username: String): boolean {
-    let userFound: boolean;
-    this.http.get<User>(this.userUrl + `/user/?username=${username}`, httpOptions).subscribe(
-      data => {
-        let user: User = data;
-        this.currentUserSubject = new BehaviorSubject<User>(user);
-        this.currentUser = this.currentUserSubject.asObservable();
-        userFound = true;
-        console.log(user);
-      },
-      error => {
-        userFound = false;
-        console.log("Error finding User ::: " + username);
-        console.error(error);
-      }
-    )
-    return userFound;
+  setCurrentUser(username: String): Observable<User> {
+    this.currentUser = this.http.get<User>(this.userUrl + `/user/?username=${username}`, httpOptions).pipe(
+      take(1),
+      switchMap(user => {
+          if (user) {
+              console.log(of(user));
+              return of(user);
+          } else {
+            this.router.navigate(['login']);
+            console.log("Error getting user");
+            return EMPTY;
+          }
+        })
+    );
+    return this.currentUser;
   }
 
   public getUser(username: String): Observable<User> {

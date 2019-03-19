@@ -4,13 +4,14 @@ import { Router } from '@angular/router';
 import { TokenStorage } from '@app/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { UserService } from './service';
 
 const TOKEN_HEADER_KEY = 'Authorization';
 
 @Injectable()
 export class Interceptor implements HttpInterceptor {
 
-  constructor(private token: TokenStorage, private router: Router) { }
+  constructor(private token: TokenStorage) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler):
     Observable<HttpSentEvent | HttpHeaderResponse | HttpProgressEvent | HttpResponse<any> | HttpUserEvent<any> | HttpEvent<any>> {
@@ -19,15 +20,15 @@ export class Interceptor implements HttpInterceptor {
     if (this.token.getToken() != null) {
       authReq = req.clone({ headers: req.headers.set(TOKEN_HEADER_KEY, 'Bearer ' + this.token.getToken()) });
     } else {
-      this.router.navigate(['login']);
+      this.token.signOut();
     }
 
     return next.handle(authReq).pipe(catchError(err => {
 
-      if (err instanceof HttpErrorResponse) { console.log('401 Unauthorized on :: ' + req.url); }
+      if (err instanceof HttpErrorResponse) { console.log('401 Unauthorized on :: ' + req.url); this.token.signOut(); }
 
       if (err.status === 401) {
-        this.router.navigate(['login']);
+        this.token.signOut();
       }
       const error = err.error.message || err.statusText;
       return throwError(error);

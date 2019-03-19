@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '@app/core';
 import { User } from '@app/models';
 import { Subscription } from 'rxjs';
+import { UserService } from '@app/service';
 
 @Component({
   selector: 'app-navbar',
@@ -11,15 +12,15 @@ import { Subscription } from 'rxjs';
 })
 export class NavbarComponent implements OnInit, OnDestroy {
 
-  loggedIn = false;
+  name: string;
+  points: number;
 
-  currentUser: User;
   currentUserSubscription: Subscription;
 
   currentShoppingSubscription: Subscription;
   cartCount: number;
 
-  constructor(private router: Router, private authService: AuthService) { }
+  constructor(private router: Router, private authService: AuthService, private userService: UserService) {}
 
   ngOnInit() { }
 

@@ -21,8 +21,11 @@ export class LoginComponent {
     this.authService.attemptAuth(this.username, this.password).subscribe(
       data => {
         this.token.saveToken(data.token);
-        this.userService.setCurrentUser(this.username);
+        // this.userService.setCurrentUser(this.username);
         this.router.navigate(['user']);
+      },
+      error => {
+        this.token.signOut();
       }
     );
   }

@@ -6,13 +6,8 @@ import { AuthGuard } from '@app/core'
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  {
-    path: '', resolve: { users: UserResolve }, canActivate: [AuthGuard],
-    children: [
-      { path: 'user', component: UserComponent },
-    ]
-  },
-  { path: '**', redirectTo: '' }
+  { path: 'user', component: UserComponent, resolve: { users: UserResolve }, canActivate: [AuthGuard], },
+  { path: '**', redirectTo: 'user' }
 ];
 
 @NgModule({
@@ -24,4 +19,5 @@ const routes: Routes = [
   ],
   declarations: []
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
