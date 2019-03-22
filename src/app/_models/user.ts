@@ -34,7 +34,7 @@ export const Lennon: User = {
     password: "password",
     firstName: "John",
     lastName: "Lennon",
-    email: "john.lennon@goincentify.com",
+    email: "john.lennon@perks4me.com",
     token: 'fake-jwt-token',
     job: "Employee",
     tier: "Gold",
