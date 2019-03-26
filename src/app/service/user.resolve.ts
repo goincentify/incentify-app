@@ -28,27 +28,26 @@ export class UserResolve implements Resolve<User[]> {
     }
 }
 
-// @Injectable({
-//     providedIn: 'root',
-// })
-// export class CurrentUserResolve implements Resolve<User> {
-//     constructor(private userService: UserService, private authService: AuthService) {}
+@Injectable({
+    providedIn: 'root',
+})
+export class CurrentUserResolve implements Resolve<User> {
+    constructor(private userService: UserService, private authService: AuthService) {}
 
-//     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<User> | Observable<never> {
-//         const id: String = this.authService.getUsername();
-//         console.log(id);
-//         return this.userService.setCurrentUser(id).pipe(
-//             take(1),
-//             switchMap(user => {
-//                 if (user) {
-//                     return of(user);
-//                 } else {
-//                     // this.router.navigate(['/crisis-center']);
-//                     console.log("Error getting user");
-//                     return EMPTY;
-//                 }
-//             })
-//         );
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<User> | Observable<never> {
+        const username: String = this.authService.getUsername();
+        return this.userService.getUser(username).pipe(
+            take(1),
+            switchMap(user => {
+                if (user) {
+                    return of(user);
+                } else {
+                    // this.router.navigate(['/crisis-center']);
+                    console.log("Error getting user");
+                    return EMPTY;
+                }
+            })
+        );
         
-//     }
-// }
+    }
+}

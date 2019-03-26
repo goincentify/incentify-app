@@ -40,17 +40,5 @@ import { Interceptor } from './interceptor';
   bootstrap: [AppComponent]
 })
 export class AppModule{
-
-  constructor(private authService: AuthService, private userService: UserService) {
-    if(this.authService.isAuthenticated()) {
-      console.log("AUTH");
-      try {
-        this.userService.setCurrentUser(this.authService.getUsername());
-      } catch (ex) {
-        console.log("Unable to get user.");
-      }
-    } else {
-      console.log("NO AUTH");
-    }
-  }
+  constructor() {}
 }

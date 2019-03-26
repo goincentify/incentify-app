@@ -20,7 +20,7 @@ export class UserComponent implements OnInit {
 
   ngOnInit() {
     this.route.data.subscribe(data => {
-      this.dataSource.data = data.users;
+      this.currentUser = data.user;
     });
   } 
 

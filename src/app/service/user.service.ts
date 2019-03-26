@@ -24,25 +24,8 @@ export class UserService {
     return this.http.get<User[]>(this.userUrl + '/users', httpOptions);
   }
 
-  setCurrentUser(username: String): Observable<User> {
-    this.currentUser = this.http.get<User>(this.userUrl + `/user/?username=${username}`, httpOptions).pipe(
-      take(1),
-      switchMap(user => {
-          if (user) {
-              console.log(of(user));
-              return of(user);
-          } else {
-            this.router.navigate(['login']);
-            console.log("Error getting user");
-            return EMPTY;
-          }
-        })
-    );
-    return this.currentUser;
-  }
-
   public getUser(username: String): Observable<User> {
-    return this.http.get<User>(this.userUrl + `/user/?id=${username}`, httpOptions);
+    return this.http.get<User>(this.userUrl + `/getUserByUsername/?username=${username}`, httpOptions);
   }
 
 }
