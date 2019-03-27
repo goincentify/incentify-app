@@ -16,6 +16,26 @@
         <!-- <mat-divider></mat-divider> -->
 
         <div class="progresssummary">
+          <div class="progressbar">
+            <h4 mat-line class="progresstitle ontime">On-Time Percentage</h4>
+            <div mat-line>
+              <p class="progresslabel left"> current: <span
+                  class="progressnum">{{userOnTimePercent | number:'1.0-0'}}%</span></p>
+
+              <p class="progresslabel right">next tier: <span
+                  class="progressnum">{{progress.onTimeGoal | number:'1.0-0'}}%</span> </p>
+
+            </div>
+            <mat-progress-bar color="secondary" mode="determinate" [value]="userOnTimeGoal"></mat-progress-bar>
+          </div>
+          <div class="progressbar">
+            <h4 class="progresstitle daysworked"> Total Days Worked</h4>
+            <p class="progresslabel left">current: <span class="progressnum">{{userTotalDays | number:'1.0-0'}}</span>
+            </p>
+            <p class="progresslabel right">next tier: <span
+                class="progressnum">{{progress.totalDaysGoal | number:'1.0-0'}}</span></p>
+            <mat-progress-bar color="secondary" mode="determinate" [value]="userTotalDaysGoal"></mat-progress-bar>
+          </div>
         </div>
 
         <mat-divider></mat-divider>
@@ -128,7 +148,7 @@
                   <mat-icon matListIcon class="iconbox">{{item.icon}}</mat-icon>
                   <h2 matLine style="font-size: 16px;">{{ item.value }}</h2>
                   <h4 matLine style="font-size: 12px;">{{ item.title }}</h4>
-                  <span class="spacer"></span>
+                  
                   <button mat-button class="statbutton"
                     (click)="openDetails(item.title, item.button.info)">{{item.button.text}}</button>
                 </mat-list-item>
