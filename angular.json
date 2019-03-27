@@ -31,7 +31,7 @@
             ],
             "styles": [
               "src/styles.scss",
-              "node_modules/swiper/dist/css/swiper.min.css"
+              "node_modules/material-design-icons/iconfont/material-icons.css`"
             ],
             "scripts": [
               "node_modules/swiper/dist/js/swiper.min.js"

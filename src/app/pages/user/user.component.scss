@@ -1,0 +1,240 @@
+@import '../../app.component.scss';
+
+.example-icon {
+  padding: 0 14px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+.example-card {
+  width: 400px;
+  margin: 10% auto;
+}
+.mat-card-title{
+  font-size: 16px;
+}
+.example-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+}
+
+
+// OLD
+
+.welcome {
+  color: $navy-primary;
+
+  .text {
+    padding-left: 6px;
+  }
+
+  .user-avatar {
+    margin-left: 6px;
+    border-radius: 100%;
+    height: 48px;
+    width: auto;
+  }
+}
+
+.rank {
+  h1,
+  p {
+    margin: 0;
+  }
+}
+
+.userNameRank {
+  font-size: 24px;
+}
+
+.pointsummary {
+  text-align: center;
+  padding: 0;
+  color: $navy-primary;
+
+  h4 {
+    color: $grey-primary;
+  }
+}
+
+.progresssummary {
+  color: $navy-primary;
+  text-align: center;
+  padding: 0 16px 16px 16px;
+  .daysworked {
+    padding: 16px 0 8px 0;
+  }
+
+  .ontime {
+    margin-top: 0;
+    padding: 8px 0 16px 0;
+  }
+
+  .progressbar {
+    .progresstitle {
+      margin-bottom: 6px;
+    }
+
+    .progresslabel {
+      color: $navy-primary;
+      font-size: 10px;
+      padding: 0;
+      margin: 0;
+    }
+
+    .progressnum {
+      color: $blue-primary;
+      font-size: 12px;
+    }
+
+    .left {
+      float: left;
+    }
+    .right {
+      float: right;
+    }
+  }
+}
+
+.dashboardcolumn {
+  background-color: $white;
+  border-radius: 5px;
+
+  -webkit-box-shadow: 0px 2px 2px #808080bf;
+  -moz-box-shadow: 0px 2px 2px #808080bf;
+  box-shadow: 0px 2px 2px #808080bf;
+
+  padding-bottom: 16px;
+  margin-bottom: 12px;
+
+  .columnheader {
+    width: 100%;
+    height: 12px;
+    background-color: $blue-primary;
+    border-radius: 5px 5px 0 0;
+  }
+
+  .title {
+    text-align: center;
+    color: $navy-primary;
+    font-size: 36px;
+    padding: 16px 0 16px 0;
+  }
+}
+
+.tierIcon {
+  cursor: pointer;
+  width: 50%;
+}
+
+.main {
+  padding: 12px;
+
+  mat-icon {
+    color: $navy-primary;
+    font-size: 36px;
+    margin-right: 12px;
+  }
+
+  a {
+    color: $navy-primary;
+    font-size: 24px;
+    text-decoration-line: none;
+  }
+
+  a:hover {
+    color: $blue-primary;
+  }
+
+  p {
+    color: $grey-primary;
+    margin-left: 12px;
+  }
+}
+
+.quickviewgrid {
+  margin-top: 18px;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.statlist {
+  width: 100%;
+  padding-bottom: 12px;
+
+  mat-icon {
+    font-size: 24px;
+    margin-top: 12px;
+    border-radius: 100%;
+    color: $yellow-primary;
+    background-color: $blue-primary;
+    padding: 12px;
+  }
+
+  .statbutton {
+    padding: 0;
+    text-align: center;
+  }
+}
+
+.rankingcontainer {
+  margin-top: 6px;
+  color: $navy-primary;
+  padding-bottom: 12px;
+
+  .rankingblock {
+    padding: 6px;
+  }
+
+  .rankingtitle {
+    margin: 0;
+    padding: 6px;
+    font-size: 24px;
+  }
+  .rankinglabel {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+  }
+
+  .rank {
+    h1 {
+      font-size: 18px;
+    }
+    p {
+      font-size: 10px;
+    }
+  }
+}
+
+.announcements {
+  .announcementdetail {
+    color: $grey-primary;
+  }
+}
+
+.referCard {
+  color: $navy-primary;
+
+  .subtitle {
+    color: $blue-primary;
+  }
+
+  .emailfield {
+    width: 100%;
+  }
+}
+.resources {
+  .resourceLink {
+    color: $navy-primary;
+    :hover {
+      color: blue;
+    }
+  }
+
+  .description {
+    color: $grey-primary;
+  }
+}
