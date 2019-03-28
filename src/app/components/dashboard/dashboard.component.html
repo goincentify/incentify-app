@@ -1,0 +1,196 @@
+<h1>{{name}}</h1>
+
+<div class="columncontainer" fxLayout="row" fxFill fxLayoutGap="6px">
+
+  <div id="left" fxLayout="column" fxFlex="20">
+    <div class="dashboardcolumn">
+      <div class="columnheader"></div>
+
+      <div class="title">
+        <div class="tier" fxLayoutAlign="center center" fxLayout="column">
+          <img [src]="tierIcon" class="tierIcon" (click)="openTierDesc()">
+        </div>
+      </div>
+      <!-- <mat-divider></mat-divider> -->
+
+      <div class="progresssummary">
+        <div class="progressbar">
+          <h4 mat-line class="progresstitle ontime">On-Time Percentage</h4>
+          <div mat-line>
+            <p class="progresslabel left"> current: <span
+                class="progressnum">{{userOnTimePercent | number:'1.0-0'}}%</span></p>
+
+            <p class="progresslabel right">next tier: <span
+                class="progressnum">{{progress.onTimeGoal | number:'1.0-0'}}%</span> 
+            </p>
+
+          </div>
+          <mat-progress-bar color="secondary" mode="determinate" [value]="userOnTimeGoal"></mat-progress-bar>
+        </div>
+        <div class="progressbar">
+          <h4 class="progresstitle daysworked"> Total Days Worked</h4>
+          <p class="progresslabel left">current: <span class="progressnum">{{userTotalDays | number:'1.0-0'}}</span>
+          </p>
+          <p class="progresslabel right">next tier: <span
+              class="progressnum">{{progress.totalDaysGoal | number:'1.0-0'}}</span></p>
+          <mat-progress-bar color="secondary" mode="determinate" [value]="userTotalDaysGoal"></mat-progress-bar>
+        </div>
+      </div>
+
+      <mat-divider></mat-divider>
+
+      <div class="pointsummary">
+        <h4>Available Points</h4>
+        <h1>{{userPoints | number}}</h1>
+
+        <!-- <mat-divider></mat-divider> -->
+
+        <h4>Today's Points</h4>
+        <h1> 110 </h1>
+
+        <!-- <mat-divider></mat-divider> -->
+
+        <h4>Points This Period</h4>
+        <h1> 4,320 </h1>
+
+      </div>
+    </div>
+  </div>
+
+  <div id="middle" fxLayout="column" fxFlex="50">
+    <div class="dashboardcolumn">
+      <div class="columnheader"></div>
+      <div class="title"> Reward Yourself </div>
+      <mat-list>
+        <mat-list-item *ngFor="let option of navOptions" class="main">
+          <mat-icon matListIcon>{{option.icon}}</mat-icon>
+          <a matLine [routerLink]="option.url" routerLinkActive="active">{{option.option}}
+          </a>
+          <p matLine>
+            <span> {{option.description}} </span>
+          </p>
+        </mat-list-item>
+      </mat-list>
+    </div>
+
+    <div class="dashboardcolumn">
+      <div class="columnheader"></div>
+      <div class="announcements" fxLayout="column" fxLayoutAlign="center center">
+
+        <div class="title"> Announcements </div>
+        <div fxLayout="row">
+          <p class="announcementdetail">S&P Data Awards announced soon, stay tuned!</p>
+        </div>
+        <button mat-button color="primary" style="margin-bottom:6px"> Details </button>
+      </div>
+    </div>
+
+    <div class="dashboardcolumn">
+      <div class="columnheader"></div>
+      <div class="employeeresources">
+        <div class="title"> Employee Resources </div>
+        <mat-list>
+          <mat-list-item *ngFor="let resource of resources" class="resources">
+            <a matLine class="resourceLink" href="{{resource.url}}" target="_blank">{{resource.display}}</a>
+            <p matLine> <span class="description"> {{resource.description}} </span> </p>
+          </mat-list-item>
+
+        </mat-list>
+      </div>
+    </div>
+
+
+  </div>
+
+  <div id="middle" fxLayout="column" fxFlex="30">
+    <div class="dashboardcolumn">
+      <div class="columnheader"></div>
+      <div class="title"> Statistics </div>
+
+      <mat-divider></mat-divider>
+
+      <div class="rankingcontainer">
+        <h2 class="rankingtitle" fxLayoutAlign="center center"> Rankings </h2>
+        <div fxLayout="row" class="rankingblock">
+          <div fxFlex fxLayout="column" fxLayoutAlign="center center">
+            <!-- <p>Office Rank</p> -->
+            <div class="rank" fxLayout="row" fxLayoutAlign="center center">
+              <h1>47</h1>
+              <p style="padding:6px;">of</p>
+              <h1>231</h1>
+            </div>
+            <h4 mat-line class="rankinglabel"> Individual </h4>
+          </div>
+          <div fxFlex fxLayout="column" fxLayoutAlign="center center">
+            <!-- <p>Office Rank</p> -->
+            <div class="rank" fxLayout="row" fxLayoutAlign="center center">
+              <h1>17</h1>
+              <p style="padding:6px;">of</p>
+              <h1>51</h1>
+            </div>
+            <h4 mat-line class="rankinglabel"> Program </h4>
+          </div>
+        </div>
+      </div>
+
+      <mat-divider></mat-divider>
+
+      <mat-tab-group mat-align-tabs="center" animationDuration="150ms">
+        <mat-tab *ngFor="let data of items">
+          <ng-template mat-tab-label>
+            {{data.name}}
+          </ng-template>
+
+          <div fxLayout="column" fxLayoutAlign="space-around center">
+            <mat-list class="statlist">
+              <mat-list-item *ngFor="let item of data.items">
+                <mat-icon matListIcon class="iconbox">{{item.icon}}</mat-icon>
+                <h2 matLine style="font-size: 16px;">{{ item.value }}</h2>
+                <h4 matLine style="font-size: 12px;">{{ item.title }}</h4>
+                
+                <button mat-button class="statbutton"
+                  (click)="openDetails(item.title, item.button.info)">{{item.button.text}}</button>
+              </mat-list-item>
+            </mat-list>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+
+    <!-- <div class="dashboardcolumn" fxLayout="column" fxLayoutAlign="center center">
+        <div class="columnheader"></div>
+        <div class="title"> Refer A Friend!</div>
+        <p style="padding:0; margin:0;"> Earn 5,000 points </p>
+        <div fxLayout="column">
+          <form class="example-form">
+            <mat-form-field class="emailfield">
+              <input matInput placeholder="Enter Email">
+            </mat-form-field>
+          </form>
+          <button color="primary" style="margin:12px;" mat-flat-button>Submit</button>
+        </div>
+      </div> -->
+
+    <mat-card class="referCard">
+
+      <mat-card-header>
+        <div mat-card-avatar>
+          <mat-icon>person</mat-icon>
+        </div>
+        <mat-card-title>Refer A Friend!</mat-card-title>
+        <mat-card-subtitle class="subtitle">Earn 5,000 points.</mat-card-subtitle>
+      </mat-card-header>
+
+      <div fxLayout="column" fxLayoutAlign="center">
+        <form class="example-form">
+          <mat-form-field class="emailfield">
+            <input matInput placeholder="Enter Email">
+          </mat-form-field>
+        </form>
+        <button color="primary" mat-flat-button>Submit</button>
+      </div>
+
+    </mat-card>
+
+  </div>
+</div>

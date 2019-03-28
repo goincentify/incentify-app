@@ -1,15 +1,26 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent, UserComponent } from '@app/pages';
-import { UserResolve } from './service';
-import { AuthGuard } from '@app/core'
+import { AuthGuard } from '@app/core';
+import { LoginComponent, UserComponent, UserprofileComponent } from '@app/pages';
 import { CurrentUserResolve } from './service/user.resolve';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'user', component: UserComponent, resolve: { user: CurrentUserResolve }, canActivate: [AuthGuard] },
-  { path: '**', redirectTo: 'user' }
-];
+  {
+    path: 'userprofile', component: UserprofileComponent, resolve: { user: CurrentUserResolve }, canActivate: [AuthGuard],
+    // children: [
+    //     { path: '', component: OrdersComponent },
+    //     { path: 'orders', component: OrdersComponent },
+    //     { path: 'security', component: SecurityComponent },
+    //     { path: 'communication', component: CommunicationComponent },
+    //     { path: 'payment', component: PaymentComponent },
+    //     { path: 'redeem', component: RedeempointsComponent },
+    //     { path: 'profile', component: ProfileComponent },
+    //   ]
+    },
+    { path: '**', redirectTo: 'user' }
+  ];
 
 @NgModule({
   imports: [

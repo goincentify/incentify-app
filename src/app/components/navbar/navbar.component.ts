@@ -30,8 +30,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     // unsubscribe to ensure no memory leaks
-    this.currentShoppingSubscription.unsubscribe();
-    this.currentUserSubscription.unsubscribe();
+    // this.currentShoppingSubscription.unsubscribe();
+    // this.currentUserSubscription.unsubscribe();
   }
 
   logout() {
