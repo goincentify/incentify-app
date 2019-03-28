@@ -10,6 +10,11 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { AuthService, ErrorDialogComponent, TokenStorage } from "@app/core"
 import { Interceptor } from './interceptor';
 
+import { ProfileComponent } from './components/profile/profile/profile.component';
+import { OrdersComponent } from './components/profile/orders/orders.component';
+import { RedeempointsComponent } from './components/profile/redeempoints/redeempoints.component';
+import { SecurityComponent } from './components/profile/security/security.component';
+
 import {
   NavbarComponent,
   DashboardComponent
@@ -30,7 +35,11 @@ import {
     NavbarComponent,
     ErrorDialogComponent,
     DashboardComponent,
-    UserprofileComponent
+    UserprofileComponent,
+    ProfileComponent,
+    OrdersComponent,
+    RedeempointsComponent,
+    SecurityComponent
   ],
   imports: [
     BrowserModule,

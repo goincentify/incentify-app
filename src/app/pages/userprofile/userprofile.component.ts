@@ -11,27 +11,14 @@ import { Subscription } from 'rxjs';
   templateUrl: './userprofile.component.html',
   styleUrls: ['./userprofile.component.scss']
 })
-export class UserprofileComponent implements OnInit, OnDestroy {
-
-  private pts = 0;
-  private user;
+export class UserprofileComponent implements OnInit {
 
   options;
-
-  currentUser: User;
-  userSubscription: Subscription;
 
   constructor(private router: Router, private route: ActivatedRoute, private userService: UserService) { }
 
   ngOnInit() {
-    this.userSubscription = this.route.data.subscribe(data => {
-      this.currentUser = data.user;
-    });
-  }
-
-  ngOnDestroy() {
-    // unsubscribe to ensure no memory leaks
-    this.userSubscription.unsubscribe();
+    this.options = optionsList;
   }
 
   routeTo(destination) {

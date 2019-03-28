@@ -47,7 +47,6 @@ export class CurrentUserResolve implements Resolve<User> {
                     return EMPTY;
                 }
             })
-        );
-        
+        );        
     }
 }
