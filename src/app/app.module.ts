@@ -14,6 +14,7 @@ import { ProfileComponent } from './components/profile/profile/profile.component
 import { OrdersComponent } from './components/profile/orders/orders.component';
 import { RedeempointsComponent } from './components/profile/redeempoints/redeempoints.component';
 import { SecurityComponent } from './components/profile/security/security.component';
+import { PaymentComponent } from './components/profile/payment/payment.component';
 
 import {
   NavbarComponent,
@@ -39,7 +40,8 @@ import {
     ProfileComponent,
     OrdersComponent,
     RedeempointsComponent,
-    SecurityComponent
+    SecurityComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,

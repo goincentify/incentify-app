@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material';
 import { User } from '@app/models';
 import { Subscription } from 'rxjs';
 import { AuthService } from '@app/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-redeempoints',
@@ -13,11 +14,20 @@ import { AuthService } from '@app/core';
 })
 export class RedeempointsComponent implements OnInit, OnDestroy {
 
-  constructor(private snackBar: MatSnackBar, private userService: UserService, private authenticationService: AuthService) { }
+  userPointsSubscription: Subscription;
+  points: Number;
+  
+  constructor(private route: ActivatedRoute, private snackBar: MatSnackBar, private userService: UserService, private authenticationService: AuthService) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.userPointsSubscription = this.route.data.subscribe(data => {
+      this.points = data.user.points;
+    });
+  }
 
-  ngOnDestroy() { }
+  ngOnDestroy() {
+    this.userPointsSubscription.unsubscribe();
+  }
 
   code: string = "";
 

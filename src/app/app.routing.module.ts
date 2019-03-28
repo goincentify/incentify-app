@@ -7,6 +7,7 @@ import { ProfileComponent } from './components/profile/profile/profile.component
 import { OrdersComponent } from './components/profile/orders/orders.component';
 import { RedeempointsComponent } from './components/profile/redeempoints/redeempoints.component';
 import { SecurityComponent } from './components/profile/security/security.component';
+import { PaymentComponent } from './components/profile/payment/payment.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -15,10 +16,10 @@ const routes: Routes = [
     path: 'userprofile', component: UserprofileComponent, canActivate: [AuthGuard],
     children: [
       { path: 'orders', component: OrdersComponent },
-      { path: 'redeem', component: RedeempointsComponent },
+      { path: 'redeem', component: RedeempointsComponent, resolve: { user: CurrentUserResolve } },
       { path: 'security', component: SecurityComponent },
+      { path: 'payment', component: PaymentComponent },
       //     { path: 'communication', component: CommunicationComponent },
-      //     { path: 'payment', component: PaymentComponent },
       { path: 'profile', component: ProfileComponent, resolve: { user: CurrentUserResolve } },
       { path: '**', redirectTo: 'profile' },
       ]
