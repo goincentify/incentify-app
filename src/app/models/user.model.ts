@@ -4,8 +4,8 @@ export interface User {
 
   id: number;
   username: string;
-  salary: number;
-  age: number;
+  // salary: number; Is this field needed?
+  // age: number; Is this field needed? Test data doesn't have it
 
   password: string;
   firstName: string;

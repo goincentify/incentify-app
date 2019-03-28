@@ -1,0 +1,119 @@
+@import "../../app.component.scss";
+
+.optionBar {
+  background-color: $navy-secondary;
+  color: white;
+  height: 42px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 72px;
+  z-index: 10;
+  font-size: 16px;
+
+  .options {
+    font-size: 14px;
+    margin: 6px;
+  }
+  a {
+    text-decoration-line: none;
+    color: $blue-primary;
+    margin: 6px;
+  }
+}
+.sidenav {
+  background-color: $grey-secondary;
+
+  .mat-expansion-panel {
+    background: transparent;
+  }
+
+  .filters {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 108px;
+  }
+}
+
+.marketcontent {
+  display: block;
+  overflow: auto;
+}
+
+.rewardItem {
+  position: relative;
+  border: 1px solid $grey-secondary;
+  margin: 3px;
+  padding: 3px;
+  width: 200px;
+  height: 250px;
+  cursor: pointer;
+
+  img {
+    height: 150px;
+    width: 100%;
+    object-fit: contain;
+  }
+
+  .cartTicker {
+    background-color: $blue-primary;
+    color: $yellow-primary;
+    position: absolute;
+    top: 0;
+    padding: 6px 3px 6px 3px;
+    border-radius: 0 0 6px 6px;
+    right: 3px;
+    margin: 0;
+  }
+  .points {
+    font-size: 12px;
+  }
+  .maintext {
+    text-align: center;
+    padding-top: 12px;
+  }
+}
+
+.tagsList {
+  padding-left: 12px;
+  //hide scrollbars
+  overflow: -moz-scrollbars-none;
+  -ms-overflow-style: none;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  div.mat-chip-list-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+
+    .mat-chip {
+      // color: $grey-secondary;
+      // background-color: $white;
+      flex: 0 0 auto;
+    }
+  }
+  .scrolling-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    padding-bottom: 6px;
+  }
+}
+
+.marketTools {
+  color: white;
+  background-color: $navy-primary;
+}
+
+.marketgrid {
+  margin-top: 16px;
+  background-color: none;
+  flex-direction: row;
+  flex-wrap: wrap;
+  cursor: pointer;
+}
+
+.search {
+  padding: 12px;
+  width: 100%;
+}
