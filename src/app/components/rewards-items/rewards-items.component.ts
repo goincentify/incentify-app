@@ -38,14 +38,14 @@ export class RewardsItemsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.filters = FILTER_DATA;
-    this.shoppingSubscription = this.shoppingData.itemsList.subscribe(item => {
-      this.items = item;
-      if (this.search) {
-        this.applyFilters()
-      } else {
-        this.filteredItems = item;
-      }
-    });
+    // this.shoppingSubscription = this.shoppingData.itemsList.subscribe(item => {
+    //   this.items = item;
+    //   if (this.search) {
+    //     this.applyFilters()
+    //   } else {
+    //     this.filteredItems = item;
+    //   }
+    // });
 
     // this.filteredItems = this.items.sort((a, b) => { return a.name.localeCompare(b.name) });
 
@@ -61,7 +61,7 @@ export class RewardsItemsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.shoppingSubscription.unsubscribe();
+    // this.shoppingSubscription.unsubscribe();
   }
 
   openDetails(item): void {

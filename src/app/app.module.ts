@@ -18,7 +18,8 @@ import { PaymentComponent } from './components/profile/payment/payment.component
 
 import {
   NavbarComponent,
-  DashboardComponent
+  DashboardComponent,
+  RewardsItemsComponent
 } from '@app/components'
 
 import { 
@@ -26,6 +27,7 @@ import {
   UserComponent, 
   UserprofileComponent
 } from '@app/pages';
+import { MarketplaceComponent } from './pages/marketplace/marketplace.component';
 
 
 @NgModule({
@@ -41,7 +43,9 @@ import {
     OrdersComponent,
     RedeempointsComponent,
     SecurityComponent,
-    PaymentComponent
+    PaymentComponent,
+    MarketplaceComponent,
+    RewardsItemsComponent
   ],
   imports: [
     BrowserModule,

@@ -8,10 +8,13 @@ import { OrdersComponent } from './components/profile/orders/orders.component';
 import { RedeempointsComponent } from './components/profile/redeempoints/redeempoints.component';
 import { SecurityComponent } from './components/profile/security/security.component';
 import { PaymentComponent } from './components/profile/payment/payment.component';
+import { MarketplaceComponent } from './pages/marketplace/marketplace.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'user', component: UserComponent, resolve: { user: CurrentUserResolve }, canActivate: [AuthGuard] },
+  { path: 'marketplace', component: MarketplaceComponent, canActivate: [AuthGuard] },
+  { path: 'marketplace/:filter', component: MarketplaceComponent, canActivate: [AuthGuard] },
   {
     path: 'userprofile', component: UserprofileComponent, canActivate: [AuthGuard],
     children: [
