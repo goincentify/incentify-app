@@ -9,29 +9,7 @@ import { AuthService } from "@app/core";
 @Injectable({
     providedIn: 'root',
 })
-export class UserResolve implements Resolve<User[]> {
-    constructor(private userService: UserService) { }
-
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<User[]> | Observable<never> {
-        return this.userService.getUsers().pipe(
-            take(1),
-            switchMap(users => {
-                if (users) {
-                    return of(users);
-                } else {
-                    // this.router.navigate(['/crisis-center']);
-                    console.log("Error getting Users");
-                    return EMPTY;
-                }
-            })
-        );
-    }
-}
-
-@Injectable({
-    providedIn: 'root',
-})
-export class CurrentUserResolve implements Resolve<User> {
+export class UserResolve implements Resolve<User> {
     constructor(private userService: UserService, private authService: AuthService) {}
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<User> | Observable<never> {

@@ -11,7 +11,6 @@ import { AuthService } from '@app/core';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
-
 @Injectable({
   providedIn: 'root'
 })
@@ -53,15 +52,15 @@ export class ShoppingService implements OnDestroy {
   }
 
   getRewards() {
-    return this.http.get<string>(`${environment.apiUrl}/rewards/all`);
+    return this.http.get<RewardItem[]>(`${environment.apiUrl}/rewards/list`, httpOptions);
   }
 
   getCart() {
-    return this.http.get<string>(`${environment.apiUrl}/cart/all`);
+    return this.http.get<string>(`${environment.apiUrl}/cart/all`, httpOptions);
   }
 
   getOrders() {
-    return this.http.get<string>(`${environment.apiUrl}/orders/all`);
+    return this.http.get<string>(`${environment.apiUrl}/orders/all`, httpOptions);
   }
 
   getCartCost() {

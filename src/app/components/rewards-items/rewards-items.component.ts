@@ -5,7 +5,6 @@ import { MEMORY } from '@app/constants';
 import { RewardInfoComponent } from '@app/dialogs';
 import { ShoppingService } from '@app/service/shopping.service';
 import { Subscription } from 'rxjs';
-import { JSDocCommentStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-rewards-items',
@@ -34,20 +33,18 @@ export class RewardsItemsComponent implements OnInit, OnDestroy {
 
   private shoppingSubscription: Subscription;
 
-  constructor(private shoppingData: ShoppingService, public dialog: MatDialog, private activatedRoute: ActivatedRoute, private router: Router) { }
+  constructor(private route: ActivatedRoute, private shoppingData: ShoppingService, public dialog: MatDialog, private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.filters = FILTER_DATA;
-    // this.shoppingSubscription = this.shoppingData.itemsList.subscribe(item => {
-    //   this.items = item;
-    //   if (this.search) {
-    //     this.applyFilters()
-    //   } else {
-    //     this.filteredItems = item;
-    //   }
-    // });
-
-    // this.filteredItems = this.items.sort((a, b) => { return a.name.localeCompare(b.name) });
+    this.shoppingSubscription = this.route.data.subscribe(data => {
+      this.items = data.items;
+      if (this.search) {
+        this.applyFilters()
+      } else {
+        this.filteredItems = data.items;
+      }
+    });
 
     this.activatedRoute.paramMap.subscribe(params => {
       var filter = params.keys ? params.get('filter') : '';
@@ -61,7 +58,7 @@ export class RewardsItemsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    // this.shoppingSubscription.unsubscribe();
+    this.shoppingSubscription.unsubscribe();
   }
 
   openDetails(item): void {
