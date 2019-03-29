@@ -110,7 +110,7 @@ export const McCartney: User = {
     password: "password",
     firstName: "Paul",
     lastName: "McCartney",
-    email: "paul.mccartney@goperk4me.com",
+    email: "paul.mccartney@perk4me.com",
     token: 'fake-jwt-token',
     job: "Employee",
     tier: "Gold",
