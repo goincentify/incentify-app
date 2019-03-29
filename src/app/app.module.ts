@@ -13,7 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterComponent, LoginComponent, AdminComponent, DashboardComponent, HomeComponent, MarketplaceComponent, ShoppingcartComponent, UserprofileComponent } from './pages';
 import { AnnouncementsComponent } from './_components/announcements/announcements.component';
-import { MatCarouselModule } from '@ngmodule/material-carousel';
+// import { MatCarouselModule } from '@ngmodule/material-carousel';
 
 // used to create fake backend
 import { ErrorInterceptor, shoppingAPIProvider, userAPIProvider, JwtInterceptor } from './_helpers';;
@@ -69,8 +69,7 @@ import { ErrorInterceptor, shoppingAPIProvider, userAPIProvider, JwtInterceptor 
         FlexLayoutModule,
         ScrollDispatchModule,
         ReactiveFormsModule,
-        HttpClientModule,
-        MatCarouselModule
+        HttpClientModule
     ],
     declarations: [
         AppComponent,
