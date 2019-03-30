@@ -33,7 +33,7 @@ export class RewardsItemsComponent implements OnInit, OnDestroy {
 
   private shoppingSubscription: Subscription;
 
-  constructor(private route: ActivatedRoute, private shoppingData: ShoppingService, public dialog: MatDialog, private activatedRoute: ActivatedRoute, private router: Router) { }
+  constructor(private route: ActivatedRoute, private shoppingData: ShoppingService, public dialog: MatDialog, private router: Router) { }
 
   ngOnInit() {
     this.filters = FILTER_DATA;
@@ -45,8 +45,8 @@ export class RewardsItemsComponent implements OnInit, OnDestroy {
         this.filteredItems = data.items;
       }
     });
-
-    this.activatedRoute.paramMap.subscribe(params => {
+    
+    this.route.paramMap.subscribe(params => {
       var filter = params.keys ? params.get('filter') : '';
       if (filter) {
         this.search = filter;
@@ -103,9 +103,10 @@ export class RewardsItemsComponent implements OnInit, OnDestroy {
   itemContainsSearch(item) {
     var name = item.name.toLowerCase();
     var search = this.search.toLowerCase();
+    console.log(item);
     if (this.search != "" &&
       (name.includes(search) ||
-        this.listContainsCaseInsensitive(item.tags, this.search))
+        this.listContainsCaseInsensitive(item.tags.split(MEMORY.sqlListSeparator), this.search))
     ) {
       return true;
     }
@@ -116,7 +117,7 @@ export class RewardsItemsComponent implements OnInit, OnDestroy {
   private itemContainsTags(item) {
     var contains = false;
     this.selectedTags.forEach(tag => {
-      if (this.listContainsCaseInsensitive(item.tags, tag)) {
+      if (this.listContainsCaseInsensitive(item.tags.split(MEMORY.sqlListSeparator), tag)) {
         contains = true;
       }
     })
@@ -125,6 +126,7 @@ export class RewardsItemsComponent implements OnInit, OnDestroy {
 
   private listContainsCaseInsensitive(list, query) {
     var contains = false;
+    console.log(list);
     list.forEach(str => {
       if (str.toLowerCase() == (query.toLowerCase())) {
         contains = true;

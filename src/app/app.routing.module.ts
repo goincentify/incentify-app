@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'user', component: UserComponent, resolve: { user: UserResolve }, canActivate: [AuthGuard] },
   { path: 'marketplace', component: MarketplaceComponent, resolve: { items: RewardItemsResolve }, canActivate: [AuthGuard] },
-  { path: 'marketplace/:filter', component: MarketplaceComponent, canActivate: [AuthGuard] },
+  { path: 'marketplace/:filter', component: MarketplaceComponent, resolve: { items: RewardItemsResolve }, canActivate: [AuthGuard] },
   {
     path: 'userprofile', component: UserprofileComponent, canActivate: [AuthGuard],
     children: [
