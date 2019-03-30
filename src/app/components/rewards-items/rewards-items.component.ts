@@ -103,7 +103,6 @@ export class RewardsItemsComponent implements OnInit, OnDestroy {
   itemContainsSearch(item) {
     var name = item.name.toLowerCase();
     var search = this.search.toLowerCase();
-    console.log(item);
     if (this.search != "" &&
       (name.includes(search) ||
         this.listContainsCaseInsensitive(item.tags.split(MEMORY.sqlListSeparator), this.search))
@@ -126,7 +125,6 @@ export class RewardsItemsComponent implements OnInit, OnDestroy {
 
   private listContainsCaseInsensitive(list, query) {
     var contains = false;
-    console.log(list);
     list.forEach(str => {
       if (str.toLowerCase() == (query.toLowerCase())) {
         contains = true;

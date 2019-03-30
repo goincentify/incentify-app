@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '@app/service';
 import { Subscription } from 'rxjs';
 import { User } from '@app/models';
-import { MyErrorStateMatcher } from '@app/components';
+import { MyErrorStateMatcher } from '@app/dialogs';
 import { first } from 'rxjs/operators';
 import { AuthService } from '@app/core';
 import { ActivatedRoute } from '@angular/router';

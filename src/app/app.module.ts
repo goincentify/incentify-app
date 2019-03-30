@@ -30,10 +30,12 @@ import {
   UserComponent, 
   UserprofileComponent
 } from '@app/pages';
+import { AlertComponent } from './dialogs/alert/alert.component';
 
 
 @NgModule({
   declarations: [
+    AlertComponent,
     AppComponent,
     UserComponent,
     LoginComponent,

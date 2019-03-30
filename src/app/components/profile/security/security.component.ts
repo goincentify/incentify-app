@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MyErrorStateMatcher } from '@app/components';
+import { MyErrorStateMatcher } from '@app/dialogs';
 import { UserService } from '@app/service';
 import { first } from 'rxjs/operators';
 import { Subscription } from 'rxjs';

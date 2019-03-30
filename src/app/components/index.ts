@@ -1,4 +1,3 @@
-export { AlertComponent, MyErrorStateMatcher } from './alert/alert.component';
 export { NavbarComponent } from './navbar/navbar.component';
 export { DashboardComponent } from './dashboard/dashboard.component';
 export { RewardsItemsComponent } from './rewards-items/rewards-items.component';
