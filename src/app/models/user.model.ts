@@ -28,5 +28,6 @@ export interface User {
   daystreak?: number;
   daystreak_percentile?: number;
   cart?: RewardItem[];
+  cartId: number;
   orders?: OrderItem[];
 }

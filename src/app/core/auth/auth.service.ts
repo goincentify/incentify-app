@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { JwtHelperService } from '@auth0/angular-jwt';
 import {Observable, of} from "rxjs";
 import { GLOBAL } from '@app/constants';
 import { UserService } from '@app/service';
@@ -8,8 +7,6 @@ import { TokenStorage } from '../token/token.storage';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-
-  private jwtHelper = new JwtHelperService();
 
   constructor(private tokenStorage: TokenStorage, private http: HttpClient) { }
 

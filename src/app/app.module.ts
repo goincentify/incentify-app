@@ -22,12 +22,14 @@ import {
   RewardsItemsComponent
 } from '@app/components'
 
+import { MarketplaceComponent } from './pages/marketplace/marketplace.component';
+import { TierDescription, StatisticInfoComponent, RewardInfoComponent } from './dialogs';
+
 import { 
   LoginComponent, 
   UserComponent, 
   UserprofileComponent
 } from '@app/pages';
-import { MarketplaceComponent } from './pages/marketplace/marketplace.component';
 
 
 @NgModule({
@@ -45,7 +47,10 @@ import { MarketplaceComponent } from './pages/marketplace/marketplace.component'
     SecurityComponent,
     PaymentComponent,
     MarketplaceComponent,
-    RewardsItemsComponent
+    RewardsItemsComponent,
+    StatisticInfoComponent,
+    TierDescription,
+    RewardInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +60,7 @@ import { MarketplaceComponent } from './pages/marketplace/marketplace.component'
     FormsModule,
     AppRoutingModule
   ],
-  entryComponents: [ErrorDialogComponent],
+  entryComponents: [ErrorDialogComponent, StatisticInfoComponent, RewardInfoComponent, TierDescription],
   providers: [ErrorDialogComponent, UserService, AuthService, TokenStorage,
     {
       provide: HTTP_INTERCEPTORS,

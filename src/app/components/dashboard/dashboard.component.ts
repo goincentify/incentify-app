@@ -1,11 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { MatTableDataSource } from '@angular/material';
+import { MatTableDataSource, MatDialog } from '@angular/material';
 import { User } from '@app/models/user.model';
 // import { UserService } from '@app/service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '@app/core';
 import { UserService } from '@app/service';
 import { Subscription } from 'rxjs';
+import { StatisticInfoComponent, TierDescription } from '@app/dialogs';
 
 @Component({
   selector: 'app-dashboard',
@@ -41,7 +42,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   userSubscription: Subscription;
 
-  constructor(private userService: UserService, private route: ActivatedRoute, private authService: AuthService) { }
+  constructor(public dialog: MatDialog, private route: ActivatedRoute, private authService: AuthService) { }
 
   ngOnInit() {
     this.userSubscription = this.route.data.subscribe(data => {
@@ -249,6 +250,21 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   getIconImg(tier: string) {
     return `assets/img/icon/tier-${tier.toLowerCase()}.png`;
+  }
+
+  openDetails(title, info): void {
+    const dialogRef = this.dialog.open(StatisticInfoComponent, {
+      panelClass: 'no_padding-custom-dialog-container',
+      width: '250px',
+      data: { dialogtitle: title, dialogsubtitle: "Details", dialoginfo: info }
+    });
+  }
+
+  openTierDesc(): void {
+    const dialogRef = this.dialog.open(TierDescription, {
+      panelClass: 'no_padding-custom-dialog-container',
+      width: '250px'
+    });
   }
 
   signout() {
