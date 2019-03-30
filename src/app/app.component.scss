@@ -1,8 +1,7 @@
 @import '../styles.scss';
 
-.body {
-  background-color: transparent;
-  overflow: hidden;
+body {
+  background-color: $grey-secondary;
 }
 
 .spacer {
