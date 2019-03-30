@@ -1,7 +1,3 @@
 node_modules
-<<<<<<< HEAD
-/dist/
-=======
 dist
->>>>>>> YC
 .DS_Store
