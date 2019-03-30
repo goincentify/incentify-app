@@ -278,31 +278,31 @@ let navOptions = [
     icon: "flight",
     option: "Travel",
     description: "Redeem rewards points towards a vacation",
-    url: "marketplace/travel"
+    url: "/marketplace/travel"
   },
   {
     icon: "card_giftcard",
     option: "Gift Cards",
     description: "Turn those rewards points into credit at your favorite store",
-    url: "marketplace/gift card"
+    url: "/marketplace/gift card"
   },
   {
     icon: "fitness_center",
     option: " Fitness",
     description: "Reward your body with rewards points",
-    url: "marketplace/fitness"
+    url: "/marketplace/fitness"
   },
   {
     icon: "shopping_basket",
     option: "Electronics",
     description: "Reward yourself with new gadgets",
-    url: "marketplace/electronics"
+    url: "/marketplace/electronics"
   },
   {
     icon: "directions_car",
     option: "Transportation",
     description: "Give your rewards some miles",
-    url: "marketplace/transportation"
+    url: "/marketplace/transportation"
   },
   {
     icon: "attach_money",
