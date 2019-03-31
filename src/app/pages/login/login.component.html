@@ -31,29 +31,42 @@
                     <div>
                         <label for="username">Username</label>
                         <mat-form-field>
-                            <input matInput type="text" [(ngModel)]="username" name="username" class="form-control"
-                                [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                            <input matInput type="text" [(ngModel)]="username"
+                                name="username" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted &&
+                                f.username.errors }" />
                         </mat-form-field>
-                        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-                            <div class="warning" *ngIf="f.username.errors.required">Username is required!</div>
+                        <div *ngIf="submitted && f.username.errors"
+                            class="invalid-feedback">
+                            <div class="warning"
+                                *ngIf="f.username.errors.required">Username is
+                                required!</div>
                         </div>
                     </div>
                     <div>
                         <label for="password">Password</label>
 
                         <mat-form-field>
-                            <input matInput type="password" [(ngModel)]="password" name="password" class="form-control"
-                                [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                            <input matInput type="password"
+                                [(ngModel)]="password" name="password"
+                                class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted &&
+                                f.password.errors }" />
                         </mat-form-field>
 
-                        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                            <div class="warning" *ngIf="f.password.errors.required">Password is required</div>
+                        <div *ngIf="submitted && f.password.errors"
+                            class="invalid-feedback">
+                            <div class="warning"
+                                *ngIf="f.password.errors.required">Password is
+                                required</div>
                         </div>
                     </div>
 
                     <div fxLayoutAlign="center">
-                        <button mat-flat-button color="primary" [disabled]="loading">Login</button>
-                        <button mat-stroked-button color="primary" routerLink="/register">Register</button>
+                        <button mat-flat-button color="primary"
+                            [disabled]="loading">Login</button>
+                        <button mat-stroked-button color="primary"
+                            routerLink="/register">Register</button>
                     </div>
                 </form>
             </mat-card-content>
@@ -64,7 +77,8 @@
 <div class="info-grid" fxLayoutAlign="center center">
     <div fxDirection="column">
         <h1> Get Started with Perk4Me</h1>
-        <button mat-flat-button color="primary" (click)="contact.scrollIntoView()">Contact Us</button>
+        <button mat-flat-button color="primary"
+            (click)="contact.scrollIntoView()">Contact Us</button>
     </div>
 </div>
 
@@ -80,7 +94,8 @@
             retain an increasingly Millennial/Gen Z workforce.
         </p>
         <p>
-            <strong>Attracting talent</strong> is difficult for companies in a highly
+            <strong>Attracting talent</strong> is difficult for companies in a
+            highly
             competitive labor market.
         </p>
     </div>
@@ -125,10 +140,10 @@
                     <!-- <p><a href="">sam.seder@perk4me.com</a></p> -->
                 </div>
                 <div fxDirection="column" fxFlex="30">
-                    <img class="profile" src="assets/img/profiles/lindsay.png">
-                    <h3>Lindsay MacMillan</h3>
-                    <p>Co-Founder</p>
-                    <!-- <p><a href="">lindsay.macmillan@perk4me.com</a></p> -->
+                    <img class="profile" src="assets/img/profiles/eric.jpg">
+                    <h3>Eric Seder</h3>
+                    <p>Co-Founder and COO</p>
+                    <!-- <p><a href="">sam.seder@perk4me.com</a></p> -->
                 </div>
                 <div fxDirection="column" fxFlex="30">
                     <img class="profile" src="assets/img/profiles/sergei.jpg">
