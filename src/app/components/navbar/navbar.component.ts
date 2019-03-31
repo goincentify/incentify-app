@@ -1,9 +1,8 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '@app/core';
-import { User } from '@app/models';
-import { Subscription } from 'rxjs';
 import { UserService } from '@app/service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -20,7 +19,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
   currentShoppingSubscription: Subscription;
   cartCount: number;
 
-  constructor(private router: Router, private authService: AuthService, private userService: UserService) {}
+  @Input()
+  login: boolean;
+
+  constructor(private router: Router, private authService: AuthService, private userService: UserService) {
+  }
 
   ngOnInit() { }
 

@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './reward-info.component.html',
   styleUrls: ['./reward-info.component.scss']
 })
-export class RewardInfoComponent implements OnDestroy {
+export class RewardInfoComponent {
 
   dollars: boolean = false;
   currentItem: RewardItem;
@@ -24,14 +24,10 @@ export class RewardInfoComponent implements OnDestroy {
     this.currentItem = this.data;
   }
 
-  ngOnDestroy() {
-    this.shoppingSubscription.unsubscribe();
-  }
-
   onNoClick(): void {
     this.dialogRef.close();
   }
-  
+
   routeTo(route) {
     this.router.navigate([route]);
   }

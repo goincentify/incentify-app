@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { AuthService, TokenStorage } from '@app/core';
 import { UserService } from '@app/service';
+import { AlertService } from '@app/service/alert.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ import { UserService } from '@app/service';
 })
 export class LoginComponent {
 
-  constructor(private router: Router, public dialog: MatDialog, private authService: AuthService, private token: TokenStorage, private userService: UserService) {
+  constructor(private alertService: AlertService, private router: Router, public dialog: MatDialog, private authService: AuthService, private token: TokenStorage, private userService: UserService) {
   }
 
   username: string;
@@ -25,6 +26,7 @@ export class LoginComponent {
         this.router.navigate(['user']);
       },
       error => {
+        this.alertService.error("Unable to authenticate.");
         this.token.signOut();
       }
     );
