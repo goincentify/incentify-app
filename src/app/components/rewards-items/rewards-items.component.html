@@ -17,7 +17,7 @@
 <div fxLayout="row">
 
   <!-- SIDENAV -->
-  <div class="sidenav" fxLayout="column" fxFlex="30">
+  <div class="sidenav" fxLayout="column" fxFlex="25">
     <div class="filters">
       <mat-accordion *ngFor="let item of filters" class="mat-elevation-z0">
         <mat-expansion-panel class="filter-panel mat-elevation-z0" [expanded]="true">
@@ -38,7 +38,7 @@
 
 
   <!-- CONTENT -->
-  <div fxLayout="column" class="marketcontent" fxFlex="70">
+  <div fxLayout="column" class="marketcontent" fxFlex="75">
 
     <div fxLayout="row">
       <div fxFlex="80">
@@ -53,9 +53,7 @@
       </div>
 
       <div fxFlex="20" fxLayoutAlign="center center">
-        <button mat-button [matMenuTriggerFor]=" menu"> Sort: <mat-icon class="sorticon">{{sortType.direction}}
-          </mat-icon>
-          {{sortType.type}} </button>
+          <button mat-button [matMenuTriggerFor]=" menu"><mat-icon class="sorticon">{{sortType.direction}}</mat-icon>{{sortType.type}} </button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item (click)="sort('pricesort')">
             <mat-icon class="sorticon">attach_money</mat-icon> Price
