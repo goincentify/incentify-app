@@ -79,10 +79,10 @@
 
     <div class="marketgrid" fxLayoutAlign="center">
       <div fxLayout="column" class="rewardItem" *ngFor="let item of filteredItems" (mouseenter)="item.hover=true"
-        (mouseleave)="item.hover=false">
+        (mouseleave)="item.hover=false" (click)="openDetails(item);">
         <mat-icon class="cartTicker" *ngIf="item.incart">shopping_basket</mat-icon>
         <div>
-          <img (click)="openDetails(item);" class="rewarditem" src={{item.image}} alt="item.image">
+          <img class="rewarditem" src={{item.image}} alt="item.image">
         </div>
         <div fxLayout="column" fxLayoutAlign="center center" *ngIf="!item.hover">
           <div class="maintext">

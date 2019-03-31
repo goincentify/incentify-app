@@ -62,10 +62,11 @@ export class RewardsItemsComponent implements OnInit, OnDestroy {
   }
 
   openDetails(item): void {
+    console.log("here");
     const dialogRef = this.dialog.open(RewardInfoComponent, {
       panelClass: 'no_padding-custom-dialog-container',
       width: '250px',
-      data: item.id
+      data: item
     });
   }
 

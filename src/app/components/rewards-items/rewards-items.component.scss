@@ -3,7 +3,7 @@
 .optionBar {
   background-color: $navy-secondary;
   color: white;
-  height: 42px;
+  height: 24px;
   position: -webkit-sticky;
   position: sticky;
   top: 72px;
@@ -20,6 +20,7 @@
     margin: 6px;
   }
 }
+
 .sidenav {
   background-color: $grey-secondary;
 
@@ -41,7 +42,8 @@
 
 .rewardItem {
   position: relative;
-  border: 1px solid $grey-secondary;
+  background-color: $grey-alternate;
+  border: 1px solid $grey-primary;
   margin: 3px;
   padding: 3px;
   width: 200px;
@@ -88,8 +90,8 @@
     overflow-x: auto;
 
     .mat-chip {
-      // color: $grey-secondary;
-      // background-color: $white;
+      color: $white;
+      background-color: $blue-primary;
       flex: 0 0 auto;
     }
   }
